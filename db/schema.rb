@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_191338) do
+ActiveRecord::Schema.define(version: 2019_08_13_212822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "bill_to_info"
+    t.string "description"
+    t.date "date"
+    t.date "job_date"
+    t.integer "subtotal"
+    t.integer "tax"
+    t.integer "total"
+    t.integer "payments_credits"
+    t.integer "balance_remaining"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "work_order_id"
+    t.index ["work_order_id"], name: "index_invoices_on_work_order_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +43,24 @@ ActiveRecord::Schema.define(version: 2019_08_13_191338) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_orders", force: :cascade do |t|
+    t.string "technician"
+    t.date "date"
+    t.string "location"
+    t.integer "hours"
+    t.string "customer_name"
+    t.string "customer_street_address"
+    t.string "customer_city"
+    t.string "customer_zip_code"
+    t.string "customer_phone_number"
+    t.string "customer_email"
+    t.string "job_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_work_orders_on_user_id"
+  end
+
+  add_foreign_key "invoices", "work_orders"
+  add_foreign_key "work_orders", "users"
 end
