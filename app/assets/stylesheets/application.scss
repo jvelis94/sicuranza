@@ -11,7 +11,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import 'work_orders/new';
 
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #949494;
+}
 
 .page-width {
     width: 90%;
@@ -19,5 +24,7 @@
 }
 
 .form-titles {
-    text-align: center
+    text-align: center;
+    margin-top: 50px;
+    color: #000000;
 }

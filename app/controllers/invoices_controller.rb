@@ -7,14 +7,27 @@ class InvoicesController < ApplicationController
 
     def show
         @invoice = Invoice.find(params[:id])
+        @invoice.work_order = @work_order
+        @invoice.save
     end
 
     def new
+        @work_order = WorkOrder.find(params[:work_order_id])
         @invoice = Invoice.new
+        @invoice.work_order = @work_order
     end
 
     def create
-        Invoice.create(invoice_params)
+        @work_order = WorkOrder.find(params[:work_order_id])
+        @invoice = Invoice.new(invoice_params)
+        @invoice.work_order = @work_order
+        respond_to do |format|
+            if @invoice.save
+                format.html { redirect_to root_path, notice: 'Invoice was successfully created.' }
+            else
+                format.html { render action: 'new'}
+            end
+        end
     end
 
     def edit
