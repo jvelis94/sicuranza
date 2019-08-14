@@ -1,0 +1,33 @@
+<div class='page-width'>
+    <h1 class='form-titles'>New Work Order</h1>
+
+    <%= simple_form_for(@work_order, html: { multipart: true}) do |f| %>
+    <div id='tech-info'>
+            <%= f.input :technician, label: 'Technician:' %>
+            <%= f.input :date, label: "Today's Date:" %>
+            <%= f.input :location, label: 'Job Location:' %>
+            <%= f.input :hours, label: 'Labor Hours:' %>
+    </div>
+
+    <h4 class='form-titles'>Customer Details</h4>
+    
+    <div id='customer-info'>
+        <%= f.input :customer_name, label: 'Name:' %>
+        <%= f.input :customer_street_address, label: 'Street Address:' %>
+        <section id='city-zip-phone-email-grid'>
+        <%= f.input :customer_city, label: 'City:' %>
+        <%= f.input :customer_zip_code, label: 'Zip:' %>
+        <%= f.input :customer_phone_number, label: 'Phone:' %>
+        <%= f.input :customer_email, label: 'Email:' %>
+        </section>
+    
+    <h4 class='form-titles'>Work Details</h4>
+        <br>
+        <%= f.text_area :job_details, label: 'Work Details:', id:'work-details' %>
+    </div>
+
+        <br>
+
+        <%= f.button :submit, 'Create Invoice', class: 'btn btn-primary' %>
+    <% end %>
+</div>

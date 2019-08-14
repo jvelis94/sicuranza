@@ -11,10 +11,19 @@ class WorkOrdersController < ApplicationController
 
     def new
         @work_order = WorkOrder.new
+        
     end
 
     def create
-        WorkOrder.create(work_order_params)
+        @work_order = WorkOrder.new(work_order_params)
+        @work_order.user = current_user
+        respond_to do |format|
+            if @work_order.save
+                format.html { redirect_to new_work_order_invoice_path(@work_order), notice: 'Work Order was successfully created.' }
+            else
+                format.html { render action: 'new'}
+            end
+        end
     end
 
     def edit
