@@ -1,0 +1,24 @@
+<div class='page-width'>
+    <table>
+        <thead>
+            <tr>
+                <td>Order ID</td>
+                <td>Date</td>
+                <td>Technician</td>
+                <td>Location</td>
+                <td>Customer Name</td>
+            </tr>
+        </thead>
+        <tbody>
+    <% @work_orders.each do |work_order| %>
+            <tr>
+                <td><%= work_order.id %></td>
+                <td><%= work_order.date %></td>
+                <td><%= work_order.technician %></td>
+                <td><%= work_order.location %></td>
+                <td><%= work_order.customer_name %></td>
+            </tr>    
+    <% end %>
+        </tbody>
+    </table>
+</div>
