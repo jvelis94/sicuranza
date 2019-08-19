@@ -27,3 +27,9 @@ table {
 table td {
     text-align: center;
 }
+
+@media (max-width: 900px) {
+    #tech-info {
+        display: block;
+    }
+}

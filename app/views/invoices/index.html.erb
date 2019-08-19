@@ -14,7 +14,7 @@
             <tr>
                 <td><%= invoice.id %></td>
                 <td><%= invoice.job_date %></td>
-                <td><%= invoice.customer_name %></td>
+                <td><%= (invoice.bill_to_info).split('-')[0]%> <br> <%= (invoice.bill_to_info).split('-')[1] %> <br> <%= (invoice.bill_to_info).split('-')[2]%> </td>
                 <td><%= invoice.total %></td>
                 <td><%= invoice.description %></td>
             </tr>    

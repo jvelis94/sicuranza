@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :work_orders do 
     resources :invoices
   end
+
+  resources :invoices, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
