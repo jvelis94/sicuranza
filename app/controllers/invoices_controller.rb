@@ -6,14 +6,14 @@ class InvoicesController < ApplicationController
     end
 
     def show
-        # @invoice = Invoice.find(params[:id])
+        @invoice = Invoice.find(params[:id])
         # @work_order = WorkOrder.find(params[:work_order_id])
         # @invoice.work_order = @work_order
         # @invoice.save
         respond_to do |format|
             format.html
             format.pdf do
-                render pdf: "Invoice No. #{@invoice.work_order.work_order_id}",
+                render pdf: "Invoice No. #{@invoice.work_order_id}",
                 page_size: 'A4',
                 template: "invoices/show.html.erb",
                 layout: "pdf.html",

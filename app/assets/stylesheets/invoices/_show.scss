@@ -1,0 +1,8 @@
+#invoice-details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bill-to td, .date-project td {
+    border: 1px solid black;
+}
