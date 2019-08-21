@@ -10,7 +10,18 @@
     <%= f.input :job_date, label: "Job Date:" %>
 
     <div id='work-info'>
-        
+        <div id='descriptions'>
+            <%= f.input :description, label: "Description:"%>
+            <%= f.input :description2, label: "Description:"%>
+            <%= f.input :description3, label: "Description:"%>
+            <%= f.input :description4, label: "Description:"%>
+        </div>
+        <div id='amounts'>
+            <%= f.input :amount, label: "Amount:", class:'amount' %>
+            <%= f.input :amount2, label: "Amount:", class:'amount' %>
+            <%= f.input :amount3, label: "Amount:", class:'amount' %>
+            <%= f.input :amount4, label: "Amount:", class:'amount' %>
+        </div>
     </div>
 
         <br>

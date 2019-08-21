@@ -10,14 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_214110) do
+ActiveRecord::Schema.define(version: 2019_08_21_123824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.string "description"
+    t.decimal "price"
+    t.bigint "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.string "bill_to_info"
-    t.string "description"
     t.date "date"
     t.date "job_date"
     t.integer "subtotal"
@@ -28,6 +36,14 @@ ActiveRecord::Schema.define(version: 2019_08_13_214110) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "work_order_id"
+    t.decimal "amount"
+    t.string "description2"
+    t.decimal "amount2"
+    t.string "description3"
+    t.decimal "amount3"
+    t.string "description4"
+    t.decimal "amount4"
+    t.string "description"
     t.index ["work_order_id"], name: "index_invoices_on_work_order_id"
   end
 
@@ -63,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_214110) do
     t.index ["user_id"], name: "index_work_orders_on_user_id"
   end
 
+  add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "work_orders"
   add_foreign_key "work_orders", "users"
 end
