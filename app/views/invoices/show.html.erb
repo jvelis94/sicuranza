@@ -1,33 +1,147 @@
-<h1 class='form-titles'>Invoice #<%= @invoice.id %></h1>
 
-<div id='invoice-details'>
-    <div class='bill-to'>
-        <table>
-            <tbody>
+<div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+          <tr class="top">
+            <td colspan="4">
+              <table>
                 <tr>
-                    <td>Bill To:</td>
-                <tr>
-                    <td>
-                    <%= (@invoice.bill_to_info).split('-')[0]%><br> 
-                    <%= (@invoice.bill_to_info).split('-')[1]%>
-                    </td>
+                  <td class="title">
+                    
+                  </td>
+
+                  <td>
+                    <h1 class='form-titles'>Invoice #:<%= @invoice.id %></h1>
+                  </td>
                 </tr>
-            </tbody>
+              </table>
+            </td>
+          </tr>
+
+          <tr class="information">
+            <td colspan="4">
+              <table>
+                <tr>
+                  <td>
+                    <strong>Bill To: <br>
+                    <%= (@invoice.bill_to_info).split('-')[0] %></strong><br>
+                    <%= (@invoice.bill_to_info).split('-')[1] %><br>
+                    <%= (@invoice.bill_to_info).split('-')[2] %><br>
+                  </td>
+
+                  <td>
+                    <strong><%= @invoice.description %></strong><br>
+                    <%= @invoice.job_date %><br>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr class="heading">
+            <td>Item</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td>Total</td>
+          </tr>
+
+        <tr class="item">
+            <td>
+                <%= @invoice.description %><br>
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td>
+                <%= number_to_currency(@invoice.amount) %>
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                <%= @invoice.description2 %><br>
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td>
+                <%= number_to_currency(@invoice.amount2) %>
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                <%= @invoice.description3 %><br>
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td>
+                <%= number_to_currency(@invoice.amount3) %>
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                <%= @invoice.description4 %><br>
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td class="right">
+            </td>
+
+            <td>
+                <%= number_to_currency(@invoice.amount4) %>
+            </td>
+        </tr>
+
+          <tr>
+            <td colspan="4"></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td><strong>Subtotal</strong></td>
+            <td><%= number_to_currency(@invoice.subtotal) %></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td><strong>Tax</strong></td>
+            <td>+ <%= number_to_currency(@invoice.tax) %></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td><strong>Total</strong></td>
+            <td><%= number_to_currency(@invoice.total) %></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td><strong>Payments / Credits</strong></td>
+            <td><%= number_to_currency(@invoice.payments_credits) %></td>
+          </tr>
+
+          <tr class="heading">
+            <td colspan="2"></td>
+            <td><strong>BALANCE REMANINING:</strong></td>
+            <td>
+               <strong><%= number_to_currency(@invoice.balance_remaining) %></strong>
+            </td>
+          </tr>
         </table>
     </div>
-
-    <div class='date-project'>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Date</td>
-                    <td>Project</td>
-                </tr>
-                <tr>
-                    <td><%= @invoice.job_date %></td>
-                    <td><%= @invoice.description %></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>

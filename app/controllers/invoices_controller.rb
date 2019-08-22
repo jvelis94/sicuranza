@@ -34,6 +34,8 @@ class InvoicesController < ApplicationController
     def create
         @work_order = WorkOrder.find(params[:work_order_id])
         @invoice = Invoice.new(invoice_params)
+        @invoice.total = @invoice.subtotal + @invoice.tax
+        @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
         @invoice.work_order = @work_order
         respond_to do |format|
             if @invoice.save
@@ -59,7 +61,7 @@ class InvoicesController < ApplicationController
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :description, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
+        params.require(:invoice).permit(:bill_to_info, :description, :amount, :description2, :amount2,:description3, :amount3, :description4, :amount4, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
     end
 
     def set_invoice
