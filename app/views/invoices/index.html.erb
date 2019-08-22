@@ -1,5 +1,5 @@
 <div class='page-width'>
-    <table>
+    <table class='work-orders'>
         <thead>
             <tr>
                 <td>Invoice ID</td>
@@ -7,6 +7,7 @@
                 <td>Customer</td>
                 <td>Total</td>
                 <td>Description</td>
+                <td colspan='2'>More Details</td>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,8 @@
                 <td><%= (invoice.bill_to_info).split('-')[0]%> <br> <%= (invoice.bill_to_info).split('-')[1] %> <br> <%= (invoice.bill_to_info).split('-')[2]%> </td>
                 <td><%= invoice.total %></td>
                 <td><%= invoice.description %></td>
+                <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
+                <td><%= link_to 'PDF', invoice_path(invoice, format: :pdf) %></td>
             </tr>    
     <% end %>
         </tbody>

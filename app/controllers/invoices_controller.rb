@@ -7,8 +7,22 @@ class InvoicesController < ApplicationController
 
     def show
         @invoice = Invoice.find(params[:id])
-        @invoice.work_order = @work_order
-        @invoice.save
+        # @work_order = WorkOrder.find(params[:work_order_id])
+        # @invoice.work_order = @work_order
+        # @invoice.save
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "Invoice No. #{@invoice.work_order_id}",
+                page_size: 'A4',
+                template: "invoices/show.html.erb",
+                layout: "pdf.html",
+                orientation: "Portrait",
+                lowquality: true,
+                zoom: 1,
+                dpi: 75
+            end
+        end
     end
 
     def new
@@ -20,6 +34,8 @@ class InvoicesController < ApplicationController
     def create
         @work_order = WorkOrder.find(params[:work_order_id])
         @invoice = Invoice.new(invoice_params)
+        @invoice.total = @invoice.subtotal + @invoice.tax
+        @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
         @invoice.work_order = @work_order
         respond_to do |format|
             if @invoice.save
@@ -45,7 +61,7 @@ class InvoicesController < ApplicationController
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :description, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
+        params.require(:invoice).permit(:bill_to_info, :description, :amount, :description2, :amount2,:description3, :amount3, :description4, :amount4, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
     end
 
     def set_invoice

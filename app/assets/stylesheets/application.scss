@@ -13,6 +13,9 @@
 @import "pages/index";
 @import 'work_orders/new';
 @import 'work_orders/index';
+@import 'invoices/show';
+@import 'invoices/new';
+@import 'invoice';
 
 * {
     font-family: 'Montserrat', sans-serif;
