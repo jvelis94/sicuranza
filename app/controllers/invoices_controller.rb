@@ -41,8 +41,8 @@ class InvoicesController < ApplicationController
         @invoice.work_order = @work_order
         respond_to do |format|
             if @invoice.save
-                mail = UserMailer.with(invoice: @invoice).invoice
-                mail.deliver_now
+                # mail = UserMailer.with(invoice: @invoice).invoice
+                # mail.deliver_now
                 format.html { redirect_to root_path, notice: 'Invoice was successfully created.' }
             else
                 format.html { render action: 'new'}
