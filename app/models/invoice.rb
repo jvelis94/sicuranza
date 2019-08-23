@@ -1,7 +1,9 @@
 class Invoice < ApplicationRecord
     belongs_to :work_order
     # has_many :invoice_items, dependent: :destroy
+    after_create :send_invoice_email
 
+    invoice = Invoice.last
     # STATUS_CLASS = {
     #     :draft => "badge badge-secondary",
     #     :sent => "badge badge-primary",
@@ -27,5 +29,8 @@ class Invoice < ApplicationRecord
     # def status_class
     #     STATUS_CLASS[self.status.to_sym]
     # end
+    def send_invoice_email
+        UserMailer.with(invoice: self).invoice.deliver_now
+    end
 
 end
