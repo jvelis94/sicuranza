@@ -6,11 +6,13 @@
               <table>
                 <tr>
                   <td class="title">
+                    <%= image_tag wicked_pdf_asset_base64('logo.jpg') %>
                     
                   </td>
-
+                </tr>
+                <tr>
                   <td>
-                    <h1 class='form-titles'>Invoice #:<%= @invoice.id %></h1>
+                    <h1 class='form-titles' style='margin-top: 0px;'>Invoice #:<%= @invoice.id %></h1>
                   </td>
                 </tr>
               </table>
@@ -29,7 +31,7 @@
                   </td>
 
                   <td>
-                    <strong><%= @invoice.description %></strong><br>
+                    <strong><%= @invoice.project_name %></strong><br>
                     <%= @invoice.job_date %><br>
                   </td>
                 </tr>

@@ -4,9 +4,15 @@
     column-gap: 32px;
 }
 
-#city-zip-phone-email-grid {
+#city-state-zip-grid {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
+    column-gap: 32px;
+}
+
+#phone-email-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     column-gap: 32px;
 }
 

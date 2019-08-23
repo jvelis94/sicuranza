@@ -3,11 +3,11 @@
 
     <%= simple_form_for(@invoice, url: work_order_invoices_path, method: "POST")  do |f| %>
     <div id='tech-info'>
-            <%= f.input :bill_to_info, label: 'Bill To:', input_html: { value: "#{@invoice.work_order.customer_name} - #{@invoice.work_order.customer_street_address}, #{@invoice.work_order.customer_city} #{@invoice.work_order.customer_zip_code}" }, readonly: true %>
+            <%= f.input :bill_to_info, label: 'Bill To:', input_html: { value: "#{@invoice.work_order.customer_name} - #{@invoice.work_order.customer_street_address}, #{@invoice.work_order.customer_city} #{@invoice.work_order.state} #{@invoice.work_order.customer_zip_code}" }, readonly: true %>
             <%= f.input :date, label: "Today's Date:", input_html: { value: "#{@invoice.work_order.date}" }, readonly: true %>
-    </div>
-
+            <%= f.input :project_name, label: "Project Name:" %>
     <%= f.input :job_date, label: "Job Date:" %>
+    </div>
 
     <div id='work-info'>
         <div id='descriptions'>
@@ -15,12 +15,18 @@
             <%= f.input :description2, label: "Description:"%>
             <%= f.input :description3, label: "Description:"%>
             <%= f.input :description4, label: "Description:"%>
+            <%= f.input :description5, label: "Description:"%>
+            <%= f.input :description6, label: "Description:"%>
+            <%= f.input :description7, label: "Description:"%>
         </div>
         <div id='amounts'>
             <%= f.input :amount, label: "Amount:", class:'amount' %>
             <%= f.input :amount2, label: "Amount:", class:'amount' %>
             <%= f.input :amount3, label: "Amount:", class:'amount' %>
             <%= f.input :amount4, label: "Amount:", class:'amount' %>
+            <%= f.input :amount5, label: "Amount:", class:'amount' %>
+            <%= f.input :amount6, label: "Amount:", class:'amount' %>
+            <%= f.input :amount7, label: "Amount:", class:'amount' %>
         </div>
 
         <%= f.input :subtotal, label: "Subtotal:" %>

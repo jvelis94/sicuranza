@@ -1,0 +1,5 @@
+class AddStateToWorkOrdersTable < ActiveRecord::Migration[5.2]
+  def change
+      add_column :work_orders, :state, :string
+  end
+end

@@ -14,9 +14,12 @@
     <div id='customer-info'>
         <%= f.input :customer_name, label: 'Name:' %>
         <%= f.input :customer_street_address, label: 'Street Address:' %>
-        <section id='city-zip-phone-email-grid'>
+        <section id='city-state-zip-grid'>
         <%= f.input :customer_city, label: 'City:' %>
+        <%= f.input :state, label: 'State:' %>
         <%= f.input :customer_zip_code, label: 'Zip:' %>
+        </section>
+        <section id='phone-email-grid'>
         <%= f.input :customer_phone_number, label: 'Phone:' %>
         <%= f.input :customer_email, label: 'Email:' %>
         </section>
