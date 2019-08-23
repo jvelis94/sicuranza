@@ -6,7 +6,7 @@
                 <td>Job Date</td>
                 <td>Customer</td>
                 <td>Total</td>
-                <td>Description</td>
+                <td>Project Name</td>
                 <td colspan='2'>More Details</td>
             </tr>
         </thead>
@@ -17,7 +17,7 @@
                 <td><%= invoice.job_date %></td>
                 <td><%= (invoice.bill_to_info).split('-')[0]%> <br> <%= (invoice.bill_to_info).split('-')[1] %> <br> <%= (invoice.bill_to_info).split('-')[2]%> </td>
                 <td><%= invoice.total %></td>
-                <td><%= invoice.description %></td>
+                <td><%= invoice.project_name %></td>
                 <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
                 <td><%= link_to 'PDF', invoice_path(invoice, format: :pdf) %></td>
             </tr>    

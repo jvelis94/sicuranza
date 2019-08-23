@@ -61,7 +61,7 @@ class InvoicesController < ApplicationController
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :description, :amount, :description2, :amount2,:description3, :amount3, :description4, :amount4, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
+        params.require(:invoice).permit(:bill_to_info, :project_name, :description, :amount, :description2, :amount2,:description3, :amount3, :description4, :amount4, :description5, :amount5, :description6, :amount6, :description7, :amount7, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
     end
 
     def set_invoice

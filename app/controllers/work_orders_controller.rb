@@ -41,7 +41,7 @@ class WorkOrdersController < ApplicationController
     private
 
     def work_order_params
-        params.require(:work_order).permit(:technician, :date, :location, :hours, :customer_name, :customer_street_address, :customer_city, :customer_zip_code, :customer_phone_number, :customer_email, :job_details)
+        params.require(:work_order).permit(:technician, :date, :location, :hours, :customer_name, :customer_street_address, :customer_city, :state, :customer_zip_code, :customer_phone_number, :customer_email, :job_details)
     end
 
     def set_work_order
