@@ -2,7 +2,8 @@ class WorkOrdersController < ApplicationController
     before_action :set_work_order, only: [:show, :edit, :update, :destroy]
             
     def index
-        @work_orders = WorkOrder.all        
+        @work_orders = WorkOrder.all
+        @invoices = Invoice.all
     end
 
     def show
@@ -19,7 +20,7 @@ class WorkOrdersController < ApplicationController
         @work_order.user = current_user
         respond_to do |format|
             if @work_order.save
-                format.html { redirect_to new_work_order_invoice_path(@work_order), notice: 'Work Order was successfully created.' }
+                format.html { redirect_to root_path, notice: 'Work Order was successfully created.' }
             else
                 format.html { render action: 'new'}
             end
