@@ -1,0 +1,11 @@
+<p>Contractor Info:</p>
+<%= @contractor.name %>
+<%= @contractor.address1 %>
+<%= @contractor.city %>, <%= @contractor.state %> <%= @contractor.zip %>
+<%= @contractor.phone %>
+
+
+<p>Files</p>
+<% @contractor.files.each do |file| %>
+    <%= link_to file.filename, file, target: :blank %>
+<% end %>
