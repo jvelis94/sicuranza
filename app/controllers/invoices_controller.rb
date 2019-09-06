@@ -52,7 +52,10 @@ class InvoicesController < ApplicationController
     end
 
     def update
-        if @invoice.update(invoice_params)
+        @invoice.update(invoice_params)
+            @invoice.total = @invoice.subtotal + @invoice.tax
+            @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
+         if @invoice.update(invoice_params)
             flash[:success] = "Product was successfully updated"
           else
             render 'edit'
