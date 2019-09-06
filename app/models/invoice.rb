@@ -1,7 +1,7 @@
 class Invoice < ApplicationRecord
     belongs_to :work_order
     # has_many :invoice_items, dependent: :destroy
-    after_create :send_invoice_email
+    # after_create :send_invoice_email
 
     invoice = Invoice.last
     # STATUS_CLASS = {
