@@ -7,7 +7,7 @@
                 <td>Technician</td>
                 <td>Location</td>
                 <td>Customer Name</td>
-                <td colspan='2'>Invoice</td>
+                <td colspan='3'>Invoice</td>
             </tr>
         </thead>
         <tbody>
@@ -18,12 +18,22 @@
                 <td><%= work_order.technician %></td>
                 <td><%= work_order.location %></td>
                 <td><%= work_order.customer_name %></td>
-                <td><%= link_to 'Create Invoice', new_work_order_invoice_path(work_order) %></td>
+                    
+                <% if Invoice.count == 0 %>
+                    <td><%= link_to 'Create Invoice', new_work_order_invoice_path(work_order) %></td>
+                <% end %>
 
+                <% invoice_array = 0 %>
                 <% @invoices.each do |invoice| %>
-                    <% if work_order.id == invoice.work_order.id %>
-                        <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
-                    <% end %>
+                        <% if work_order.id == invoice.work_order.id %>
+                            <td>Invoice Created</td>
+                            <% invoice_array += 1 %>
+                                
+                        <% end %>
+                <% end %>
+
+                <% if invoice_array == 0 %>
+                    <td><%= link_to 'Create Invoice', new_work_order_invoice_path(work_order) %></td>
                 <% end %>
             </tr>    
     <% end %>

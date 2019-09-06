@@ -52,7 +52,12 @@ class InvoicesController < ApplicationController
     end
 
     def update
-        @invoice.update(invoice_params)
+        if @invoice.update(invoice_params)
+            flash[:success] = "Product was successfully updated"
+          else
+            render 'edit'
+          end
+          redirect_to root_path
     end
 
     def destroy
