@@ -2,6 +2,8 @@ class Invoice < ApplicationRecord
     belongs_to :work_order
     # has_many :invoice_items, dependent: :destroy
     # after_create :send_invoice_email
+    has_many :details
+    accepts_nested_attributes_for :details
 
     invoice = Invoice.last
     # STATUS_CLASS = {

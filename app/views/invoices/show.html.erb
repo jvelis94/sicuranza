@@ -46,10 +46,11 @@
             <td>Total</td>
           </tr>
 
+        <% @invoice.details.each do |detail| %>
         <tr class="item">
-            <td>
-                <%= @invoice.description %><br>
-            </td>
+                <td>
+                <%= detail.description %>
+                </td>
 
             <td class="right">
             </td>
@@ -58,57 +59,11 @@
             </td>
 
             <td>
-                <%= number_to_currency(@invoice.amount) %>
+                <%= number_to_currency(detail.amount) %>
             </td>
         </tr>
+        <% end %>
 
-        <tr class="item">
-            <td>
-                <%= @invoice.description2 %><br>
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td>
-                <%= number_to_currency(@invoice.amount2) %>
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                <%= @invoice.description3 %><br>
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td>
-                <%= number_to_currency(@invoice.amount3) %>
-            </td>
-        </tr>
-
-        <tr class="item">
-            <td>
-                <%= @invoice.description4 %><br>
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td class="right">
-            </td>
-
-            <td>
-                <%= number_to_currency(@invoice.amount4) %>
-            </td>
-        </tr>
 
           <tr>
             <td colspan="4"></td>
@@ -123,7 +78,7 @@
           <tr>
             <td colspan="2"></td>
             <td><strong>Tax</strong></td>
-            <td>+ <%= number_to_currency(@invoice.tax) %></td>
+            <td><%= (@invoice.tax * 100).round(3) %>%</td>
           </tr>
 
           <tr>
