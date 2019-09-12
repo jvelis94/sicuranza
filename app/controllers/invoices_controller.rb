@@ -55,7 +55,8 @@ class InvoicesController < ApplicationController
 
     def update
         @invoice.update(invoice_params)
-            @invoice.total = @invoice.subtotal + @invoice.tax
+            @invoice.subtotal = @invoice.details.map(&:amount).reduce(:+)
+            @invoice.total = @invoice.subtotal * (1 + @invoice.tax)
             @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
          if @invoice.update(invoice_params)
             flash[:success] = "Product was successfully updated"
