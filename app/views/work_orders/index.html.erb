@@ -19,9 +19,7 @@
                 <td><%= work_order.location %></td>
                 <td><%= work_order.customer_name %></td>
                     
-                <% if Invoice.count == 0 %>
-                    <td><%= link_to 'Create Invoice', new_work_order_invoice_path(work_order) %></td>
-                <% end %>
+                
 
                 <% invoice_array = 0 %>
                 <% @invoices.each do |invoice| %>

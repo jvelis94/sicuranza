@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_195028) do
+ActiveRecord::Schema.define(version: 2019_09_12_201125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,12 @@ ActiveRecord::Schema.define(version: 2019_09_06_195028) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "invoice_items", force: :cascade do |t|
+  create_table "details", force: :cascade do |t|
     t.string "description"
-    t.decimal "price"
-    t.bigint "invoice_id"
+    t.integer "amount"
+    t.integer "invoice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -61,28 +60,14 @@ ActiveRecord::Schema.define(version: 2019_09_06_195028) do
     t.date "date"
     t.date "job_date"
     t.integer "subtotal"
-    t.integer "tax"
+    t.decimal "tax"
     t.integer "total"
     t.integer "payments_credits"
     t.integer "balance_remaining"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "work_order_id"
-    t.decimal "amount"
-    t.string "description2"
-    t.decimal "amount2"
-    t.string "description3"
-    t.decimal "amount3"
-    t.string "description4"
-    t.decimal "amount4"
-    t.string "description"
     t.string "project_name"
-    t.string "description5"
-    t.decimal "amount5"
-    t.string "description6"
-    t.decimal "amount6"
-    t.string "description7"
-    t.decimal "amount7"
     t.index ["work_order_id"], name: "index_invoices_on_work_order_id"
   end
 
@@ -120,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_09_06_195028) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "work_orders"
   add_foreign_key "work_orders", "users"
 end

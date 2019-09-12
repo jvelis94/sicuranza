@@ -30,13 +30,15 @@ class InvoicesController < ApplicationController
     def new
         @work_order = WorkOrder.find(params[:work_order_id])
         @invoice = Invoice.new
+        1.times { @invoice.details.build }
         @invoice.work_order = @work_order
     end
 
     def create
         @work_order = WorkOrder.find(params[:work_order_id])
         @invoice = Invoice.new(invoice_params)
-        @invoice.total = @invoice.subtotal + @invoice.tax
+        @invoice.subtotal = @invoice.details.map(&:amount).reduce(:+)
+        @invoice.total = @invoice.subtotal * (1 + @invoice.tax)
         @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
         @invoice.work_order = @work_order
         respond_to do |format|
@@ -71,7 +73,7 @@ class InvoicesController < ApplicationController
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :project_name, :description, :amount, :description2, :amount2,:description3, :amount3, :description4, :amount4, :description5, :amount5, :description6, :amount6, :description7, :amount7, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining)
+        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :details_attributes => [:id, :description, :amount] )
     end
 
     def set_invoice

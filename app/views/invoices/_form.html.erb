@@ -1,7 +1,7 @@
 <div class='page-width'>
     <h1 class='form-titles'>New Invoice</h1>
 
-    <%= simple_form_for(@invoice, url: work_order_invoices_path, method: "POST")  do |f| %>
+    <%= simple_form_for(@invoice)  do |f| %>
     <div id='tech-info'>
             <%= f.input :bill_to_info, label: 'Bill To:', input_html: { value: "#{@invoice.work_order.customer_name} - #{@invoice.work_order.customer_street_address}, #{@invoice.work_order.customer_city} #{@invoice.work_order.state} #{@invoice.work_order.customer_zip_code}" }, readonly: true %>
             <%= f.input :date, label: "Today's Date:", input_html: { value: "#{@invoice.work_order.date}" }, readonly: true %>
