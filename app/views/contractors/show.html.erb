@@ -1,11 +1,16 @@
-<p>Contractor Info:</p>
-<%= @contractor.name %>
-<%= @contractor.address1 %>
-<%= @contractor.city %>, <%= @contractor.state %> <%= @contractor.zip %>
-<%= @contractor.phone %>
+<div class='page-width'>
+    <h1 class='form-titles'>Contractor Information:</h1>
+        <div style='text-align: center'>
+            <h3><%= @contractor.name %></h3>
+            <h3><%= @contractor.address1 %></h3>
+            <h3><%= @contractor.city %>, <%= @contractor.state %> <%= @contractor.zip %></h3>
+            <h3><%= @contractor.phone %></h3>
+        </div>
 
-
-<p>Files</p>
-<% @contractor.files.each do |file| %>
-    <%= link_to file.filename, file, target: :blank %>
-<% end %>
+    <h1 class='form-titles'>Files</h1>
+    <div class='menu-actions'>
+        <% @contractor.files.each do |file| %>
+            <%= link_to file.filename, file, target: :blank %>
+        <% end %>
+    </div>
+</div>
