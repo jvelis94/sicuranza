@@ -1,10 +1,15 @@
+//= require jquery
 //= require rails-ujs
-//= require_tree .
 //= require dropzone
+//= require turbolinks
 //= require activestorage
-
+//= require bootstrap-sprockets
 // direct_uploads.js
- 
+//= require moment
+//= require fullcalendar
+//= require daterangepicker
+ //= require_tree .
+
 addEventListener("direct-upload:initialize", event => {
     const { target, detail } = event
     const { id, file } = detail

@@ -37,3 +37,6 @@ gem 'wkhtmltopdf-binary'
 gem 'dropzonejs-rails'
 gem 'aws-sdk-s3'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'turbolinks', '~> 5.x'
+gem 'bootstrap-sass'
