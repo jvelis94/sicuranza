@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :invoices, only: [:index, :show, :edit, :update]
   resources :contractors
+  resources :visitors, only: [:index]
+  resources :events
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
