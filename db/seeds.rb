@@ -21,6 +21,8 @@ puts 'destroying old users, work orders and invoices'
 Invoice.destroy_all
 WorkOrder.destroy_all
 User.destroy_all
+Event.destroy_all
+Contractor.destroy_all
 
 
 
