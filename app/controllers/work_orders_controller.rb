@@ -38,6 +38,8 @@ class WorkOrdersController < ApplicationController
         @work_order.destroy
     end
     
+    def options
+    end
 
     private
 
