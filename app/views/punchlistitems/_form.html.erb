@@ -1,0 +1,4 @@
+<%= simple_form_for([@jobpunchlist, @jobpunchlist.punchlistitems.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "new item" %>
+ <%= f.submit %>
+<% end %>

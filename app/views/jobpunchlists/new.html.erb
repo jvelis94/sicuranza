@@ -1,0 +1,12 @@
+<h1 class="jobpunchlist_title">New Todo List</h1> 
+
+<div class="forms">
+<%= simple_form_for(@jobpunchlist) do |f| %>
+    <%= f.input :title, placeholder: "Description" %>
+    <%= f.text_field :description, placeholder: "Description" %>
+    <%= f.submit %>
+<% end %>
+
+<div class="links">
+<%= link_to 'Back', jobpunchlists_path %>
+</div>
