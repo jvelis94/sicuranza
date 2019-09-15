@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_15_010320) do
+ActiveRecord::Schema.define(version: 2019_09_15_014247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_010320) do
     t.bigint "jobpunchlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "completed_at"
     t.index ["jobpunchlist_id"], name: "index_punchlistitems_on_jobpunchlist_id"
   end
 
