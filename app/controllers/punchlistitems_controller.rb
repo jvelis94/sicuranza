@@ -11,16 +11,16 @@ class PunchlistitemsController < ApplicationController
     def destroy
         @punchlistitem = @jobpunchlist.punchlistitems.find(params[:id])
         if @punchlistitem.destroy
-         flash[:success] = "Todo List item was deleted."
+         flash[:success] = "item was deleted."
         else
-         flash[:error] = "Todo List item could not be deleted."
+         flash[:error] = "item could not be deleted."
         end
         redirect_to @jobpunchlist 
     end
 
     def complete
         @punchlistitem.update_attribute(:completed_at, Time.now)
-        redirect_to @jobpunchlist, notice: "Todo item completed"
+        redirect_to @jobpunchlist, notice: "item completed"
     end
     
     private

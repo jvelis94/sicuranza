@@ -1,1 +1,10 @@
-<%= link_to 'new punch list', new_jobpunchlist_path %>
+<% @jobpunchlists.each do |jobpunchlist| %>
+<div class="index_row clearfix">
+    <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
+    <p class="jobpunchlist_sub_title"><%= jobpunchlist.description %></p>
+</div>
+<% end %>
+
+<div class="links">
+    <%= link_to "New Todo List", new_jobpunchlist_path %>
+</div>
