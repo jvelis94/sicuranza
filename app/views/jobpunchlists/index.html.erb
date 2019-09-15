@@ -3,8 +3,12 @@
     <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
     <p class="jobpunchlist_sub_title"><%= jobpunchlist.description %></p>
 </div>
+<%= link_to 'Edit', edit_jobpunchlist_path(jobpunchlist) %> |
+<%= link_to 'Delete', jobpunchlist_path(jobpunchlist), method: :delete, data: { confirm: "Are you sure?" } %> |
+
 <% end %>
 
 <div class="links">
-    <%= link_to "New Todo List", new_jobpunchlist_path %>
+    <%= link_to "New Todo List", new_jobpunchlist_path %><br/>
+    <%= link_to "Home", root_path %>
 </div>
