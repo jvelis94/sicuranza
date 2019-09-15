@@ -1,0 +1,23 @@
+<div class="row clearfix">
+    <% if punchlistitem.completed? %>
+        <div class="complete">
+            <%= link_to "Completed", complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch %>
+        </div>
+        <div class="punchlistitem">
+            <p style="opacity: 0.4;"><strike><%= punchlistitem.content %></strike></p>
+        </div>
+        <div class="trash">
+            <%= link_to "Delete", jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    <% else %>
+        <div class="complete">
+            <%= link_to "Mark as Complete", complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch %>
+        </div>
+        <div class="punchlistitem">
+            <p><%= punchlistitem.content %></p>
+        </div>
+        <div class="trash">
+            <%= link_to "Delete", jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    <% end %>
+</div>

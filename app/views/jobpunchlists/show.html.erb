@@ -1,0 +1,13 @@
+<p> <strong>Title:</strong> <%= @jobpunchlist.title %></p>
+
+<p> <strong>Description:</strong> <%= @jobpunchlist.description %> </p>
+
+<div id="punchlistitems_wrapper">
+  <%= render @jobpunchlist.punchlistitems %>
+  <div id="form">
+    <%= render "punchlistitems/form" %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_jobpunchlist_path(@jobpunchlist) %> |
+<%= link_to 'Back', jobpunchlists_path %>
