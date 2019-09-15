@@ -1,3 +1,6 @@
+<div class='page-width'>
+    <h1 class='form-titles'>Punchlists</h1>
+
 <% @jobpunchlists.each do |jobpunchlist| %>
 <div class="index_row clearfix">
     <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
@@ -11,4 +14,5 @@
 <div class="links">
     <%= link_to "New Todo List", new_jobpunchlist_path %><br/>
     <%= link_to "Home", root_path %>
+</div>
 </div>

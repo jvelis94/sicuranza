@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :work_orders do 
+  resources :pages, only: [:options]
+  get 'work_orders/options', to: 'work_orders#options', as: 'work_order_options'
+  get 'contractors/options', to: 'contractors#options', as: 'contractors_options'
+
+  resources :work_orders do
     resources :invoices
   end
 

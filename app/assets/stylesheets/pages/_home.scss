@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .menu-actions {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     margin: 50px 10px;
 }

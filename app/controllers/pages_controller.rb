@@ -4,4 +4,6 @@ class PagesController < ApplicationController
   def home
     # @work_order = WorkOrder.find(params[:work_order_id])
   end
+
+  
 end

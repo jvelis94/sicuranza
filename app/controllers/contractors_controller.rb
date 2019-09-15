@@ -35,6 +35,9 @@ class ContractorsController < ApplicationController
     def destroy
         @contractor.destroy
     end
+
+    def options
+    end
     
 
     private
