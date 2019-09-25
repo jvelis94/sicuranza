@@ -18,7 +18,7 @@
 
 #work-details {
     width: 100%;
-    height: 100px;
+    height: 60px;
     border: 1px solid #ced4da
 }
 
@@ -28,6 +28,14 @@ form {
 
 @media (max-width: 900px) {
     #tech-info {
+        display: block;
+    }
+
+    #phone-email-grid {
+        display: block;
+    }
+
+    #city-state-zip-grid {
         display: block;
     }
 }
