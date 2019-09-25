@@ -1,12 +1,14 @@
-<h1 class="jobpunchlist_title">New Todo List</h1> 
+<div class="main-content">
+    <h1 class="jobpunchlist_title">New Todo List</h1> 
 
-<div class="forms">
-<%= simple_form_for(@jobpunchlist) do |f| %>
-    <%= f.input :title, placeholder: "Description" %>
-    <%= f.input :description, placeholder: "Description" %>
-    <%= f.submit %>
-<% end %>
-
-<div class="links">
-<%= link_to 'Back', jobpunchlists_path %>
+    <div class="forms">
+    <%= simple_form_for(@jobpunchlist) do |f| %>
+        <%= f.input :title, placeholder: "HVAC Job" %>
+        <%= f.input :description, placeholder: "Punchlist for HVAC job in Hicksville" %>
+        <%= f.submit 'Submit', class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <div class="links">
+    <button class='btn btn-dark'><%= link_to 'Back', jobpunchlists_path, style: 'color: #ffffff' %></button>
+    </div>
 </div>

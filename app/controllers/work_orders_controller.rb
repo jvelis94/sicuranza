@@ -20,7 +20,7 @@ class WorkOrdersController < ApplicationController
         @work_order.user = current_user
         respond_to do |format|
             if @work_order.save
-                format.html { redirect_to root_path, notice: 'Work Order was successfully created.' }
+                format.html { redirect_to work_orders_path, notice: 'Work Order was successfully created.' }
             else
                 format.html { render action: 'new'}
             end

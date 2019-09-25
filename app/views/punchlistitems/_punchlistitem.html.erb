@@ -1,23 +1,54 @@
-<div class="row clearfix">
+<tr>
     <% if punchlistitem.completed? %>
-        <div class="complete">
-            <%= link_to "Completed", complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch %>
-        </div>
+    <td>
         <div class="punchlistitem">
-            <p style="opacity: 0.4;"><strike><%= punchlistitem.content %></strike></p>
+            <p><strike><%= punchlistitem.created_at.strftime('%b %d, %Y')%></strike></p>
         </div>
-        <div class="trash">
-            <%= link_to "Delete", jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    </td>
+    <td>
+        <div class="punchlistitem">
+            <p><strike><%= punchlistitem.content %></strike></p>
         </div>
+    </td>
+    <td>
+        <div class="complete">
+            <%= link_to complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch do %>
+                <i class="fas fa-check"></i>
+            <% end %>
+        </div>
+    </td>
+    <td>
+        <div class="punchlistitem">
+            <p><strike><%= punchlistitem.completed_at.strftime('%b %d, %Y')%></strike></p>
+        </div>
+    </td>
     <% else %>
-        <div class="complete">
-            <%= link_to "Mark as Complete", complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch %>
-        </div>
+    <td>
         <div class="punchlistitem">
-            <p><%= punchlistitem.content %></p>
+            <p><%= punchlistitem.created_at.strftime('%b %d, %Y')%></p>
         </div>
+    </td>
+    <td>
+        <div class="punchlistitem">
+            <p ><%= punchlistitem.content %></p>
+        </div>
+    </td>
+    <td>
+        <div class="complete">
+            <button class="btn btn-warning btn-sm"><%= link_to "Mark Complete", complete_jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :patch %></button>
+        </div>
+    </td>
+    <td>
+        <div class="punchlistitem">
+            <p> N/A </p>
+        </div>
+    </td>
+<% end %>
+    <td>
         <div class="trash">
-            <%= link_to "Delete", jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to jobpunchlist_punchlistitem_path(@jobpunchlist, punchlistitem.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
         </div>
-    <% end %>
-</div>
+    </td>
+</tr>

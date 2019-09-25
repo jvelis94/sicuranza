@@ -43,7 +43,7 @@ class InvoicesController < ApplicationController
         @invoice.work_order = @work_order
         respond_to do |format|
             if @invoice.save
-                format.html { redirect_to root_path, notice: 'Invoice was successfully created.' }
+                format.html { redirect_to invoices_path, notice: 'Invoice was successfully created.' }
             else
                 format.html { render action: 'new'}
             end
@@ -63,7 +63,7 @@ class InvoicesController < ApplicationController
           else
             render 'edit'
           end
-          redirect_to root_path
+          redirect_to invoices_path
     end
 
     def destroy
