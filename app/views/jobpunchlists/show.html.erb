@@ -1,12 +1,27 @@
-<p> <strong>Title:</strong> <%= @jobpunchlist.title %></p>
+<div class="main-content">
+  <h1> <strong><%= @jobpunchlist.title %></strong></h1>
 
-<p> <strong>Description:</strong> <%= @jobpunchlist.description %> </p>
+  <p> <%= @jobpunchlist.description %> </p>
 
-<div id="punchlistitems_wrapper">
-  <%= render @jobpunchlist.punchlistitems %>
-  <div id="form">
-    <%= render "punchlistitems/form" %>
+  <div id="punchlistitems_wrapper">
+    <table id='punchlistitems'>
+      <thead>
+          <tr>
+              <td>Created On</td>
+              <td>Todo Item</td>
+              <td>Status</td>
+              <td>Completed On</td>
+              <td></td>
+          </tr>
+      </thead>
+      <tbody>
+      <%= render @jobpunchlist.punchlistitems %>
+      </tbody>
+    </table>
+    <div id="form">
+      <%= render "punchlistitems/form" %>
+    </div>
   </div>
-</div>
 
-<%= link_to 'Back', jobpunchlists_path %>
+  <%= link_to 'Back', jobpunchlists_path %>
+</div>

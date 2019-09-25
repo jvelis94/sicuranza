@@ -96,15 +96,6 @@ ActiveRecord::Schema.define(version: 2019_09_15_014247) do
     t.index ["jobpunchlist_id"], name: "index_punchlistitems_on_jobpunchlist_id"
   end
 
-  create_table "punchlists", force: :cascade do |t|
-    t.string "item"
-    t.string "done"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "punchlistlist_type"
-    t.integer "punchlistlist_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

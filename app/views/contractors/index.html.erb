@@ -1,5 +1,8 @@
-<div class='menu-actions'>
-    <% @contractors.each do |contractor| %>
-        <%= link_to contractor.name, contractor_path(contractor) %>
-    <% end %>
+<div class='main-content'>
+    <h1 class='form-titles'>Contractors</h1>
+    <div class='menu-actions'>
+        <% @contractors.each do |contractor| %>
+            <%= link_to contractor.name, contractor_path(contractor) %>
+        <% end %>
+    </div>
 </div>
