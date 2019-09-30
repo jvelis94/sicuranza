@@ -18,7 +18,9 @@
         <% end %>
     </div>
 
-   
+    <div id='more-info'>
+        
+    </div>
         <%= submit_tag "Add More", :type => "button", id: "addAddress", onclick: 'addAddressField()'%>
         <br><br>
         <%= f.input :tax, as: :radio_buttons, collection: [0, 0.08625], label: 'Tax:' %>
