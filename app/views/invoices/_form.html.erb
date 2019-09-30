@@ -2,6 +2,8 @@
     <h1 class='form-titles'>Edit Invoice</h1>
 
     <%= simple_form_for(@invoice)  do |f| %>
+    <%= f.input :job_type, as: :radio_buttons, collection: ['Invoice', 'Estimate'], label: 'Invoice or Estimate?' %> 
+    <br>
     <div id='tech-info'>
             <%= f.input :bill_to_info, label: 'Bill To:', input_html: { value: "#{@invoice.work_order.customer_name} - #{@invoice.work_order.customer_street_address}, #{@invoice.work_order.customer_city} #{@invoice.work_order.state} #{@invoice.work_order.customer_zip_code}" }, readonly: true %>
             <%= f.input :date, label: "Today's Date:", input_html: { value: "#{@invoice.work_order.date}" }, readonly: true %>
@@ -17,8 +19,9 @@
     </div>
 
    
-        <%= submit_tag "Add More", :type => "button", id: "addAddress", onclick: 'addAddressField()'%> 
-        <%= f.input :tax, label: "Tax:", input_html: { value: 0.08625 } %>
+        <%= submit_tag "Add More", :type => "button", id: "addAddress", onclick: 'addAddressField()'%>
+        <br><br>
+        <%= f.input :tax, as: :radio_buttons, collection: [0, 0.08625], label: 'Tax:' %>
         <%= f.input :payments_credits, label: "Payments/Credits:" %>
         <%= label :paid, 'Paid?' %>
         <%= f.collection_radio_buttons :paid, [[true, 'Yes'], [false, 'No']], :first, :last %> 

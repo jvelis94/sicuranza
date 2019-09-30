@@ -13,7 +13,7 @@
         </thead>
         <tbody>
     <% @invoices.each do |invoice| %>
-        <% if invoice.job_type == 'Invoice' %>
+        <% if invoice.job_type == 'Estimate' %>
             <tr>
                 <td><%= invoice.id %></td>
                 <td><%= invoice.job_date %></td>
