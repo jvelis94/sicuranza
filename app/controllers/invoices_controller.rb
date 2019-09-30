@@ -69,12 +69,20 @@ class InvoicesController < ApplicationController
     def destroy
         @invoice.destroy
     end
+
+    def paid
+        @invoices = Invoice.all  
+    end
+
+    def unpaid
+        @invoices = Invoice.all  
+    end
     
 
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :details_attributes => [:id, :description, :amount] )
+        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :paid, :notes, :details_attributes => [:id, :description, :amount] )
     end
 
     def set_invoice

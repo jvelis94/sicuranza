@@ -1,5 +1,5 @@
 <div class="main-content">
-<%= link_to 'Paid Invoices', paid_invoices_path %> | <%= link_to 'Unpaid Invoices', unpaid_invoices_path %><br>
+<%= link_to 'All Invoices', invoices_path %> | <%= link_to 'Paid Invoices', paid_invoices_path %><br>
     <table class='work-orders' style='overflow: scroll;'>
         <thead>
             <tr>
@@ -13,6 +13,7 @@
         </thead>
         <tbody>
     <% @invoices.each do |invoice| %>
+        <% if !(invoice.paid) %>
             <tr>
                 <td><%= invoice.id %></td>
                 <td><%= invoice.job_date %></td>
@@ -22,7 +23,8 @@
                 <td><%= link_to 'Edit Invoice', edit_invoice_path(invoice) %></td>
                 <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
                 <td><%= link_to 'PDF', invoice_path(invoice, format: :pdf) %></td>
-            </tr>    
+            </tr>   
+        <% end %> 
     <% end %>
         </tbody>
     </table>
