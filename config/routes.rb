@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :pages, only: [:options]
   get 'work_orders/options', to: 'work_orders#options', as: 'work_order_options'
   get 'contractors/options', to: 'contractors#options', as: 'contractors_options'
+  get 'invoices/paid', to: 'invoices#paid', as: 'paid_invoices'
+  get 'invoices/unpaid', to: 'invoices#unpaid', as: 'unpaid_invoices'
 
   resources :work_orders do
     resources :invoices

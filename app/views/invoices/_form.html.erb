@@ -1,5 +1,5 @@
 <div class='page-width'>
-    <h1 class='form-titles'>New Invoice</h1>
+    <h1 class='form-titles'>Edit Invoice</h1>
 
     <%= simple_form_for(@invoice)  do |f| %>
     <div id='tech-info'>
@@ -16,16 +16,17 @@
         <% end %>
     </div>
 
-    <div id='more-info'>
-        
-    </div>
+   
+
         <%= submit_tag "Add More", :type => "button", id: "addAddress", onclick: 'addAddressField()'%> 
         <%= f.input :tax, label: "Tax:", input_html: { value: 0.08625 } %>
         <%= f.input :payments_credits, label: "Payments/Credits:" %>
-    
-    
-    <br />
-    
+        <%= label :paid, 'Paid?' %>
+        <%= f.collection_radio_buttons :paid, [[true, 'Yes'], [false, 'No']], :first, :last %> 
+    <br>
+    <br>
+        <%= label :notes, 'Payment Notes' %>
+        <%= f.text_area :notes, label: 'Notes', id:'work-details', input_html: {placeholder: '$100 on May 3rd by Check'} %> 
 
         <br>
 

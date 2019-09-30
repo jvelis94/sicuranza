@@ -16,14 +16,12 @@
         <% end %>
     </div>
 
-    <div id='more-info'>
-        
-    </div>
+    
         <%= submit_tag "Add More", :type => "button", id: "addAddress", onclick: 'addAddressField()'%> 
         <%= f.input :tax, label: "Tax:", input_html: { value: 0.08625 } %>
         <%= f.input :payments_credits, label: "Payments/Credits:" %>
-    
-    
+        <%= f.collection_radio_buttons :options, [[true, 'Yes'], [false, 'No']], :first, :last %> 
+  
     <br />
     
 
