@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'contractors/options', to: 'contractors#options', as: 'contractors_options'
   get 'invoices/paid', to: 'invoices#paid', as: 'paid_invoices'
   get 'invoices/unpaid', to: 'invoices#unpaid', as: 'unpaid_invoices'
+  get 'estimates', to: 'invoices#estimates', as: 'estimates'
 
   resources :work_orders do
     resources :invoices

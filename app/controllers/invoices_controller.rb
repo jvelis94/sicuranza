@@ -77,12 +77,16 @@ class InvoicesController < ApplicationController
     def unpaid
         @invoices = Invoice.all  
     end
+
+    def estimates
+        @invoices = Invoice.all  
+    end
     
 
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :paid, :notes, :details_attributes => [:id, :description, :amount] )
+        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :paid, :notes, :job_type, :details_attributes => [:id, :description, :amount] )
     end
 
     def set_invoice
