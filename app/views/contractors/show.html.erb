@@ -1,4 +1,5 @@
 <div class='main-content'>
+    <%= link_to 'Edit Contractor', edit_contractor_path %>
     <h1 class='form-titles'>Contractor Information:</h1>
         <div style='text-align: center'>
             <h3><%= @contractor.name %></h3>
@@ -11,6 +12,7 @@
     <div class='menu-actions'>
         <% @contractor.files.each do |file| %>
             <%= link_to file.filename, file, target: :blank %>
+            <%= link_to 'Remove', delete_file_path(file.id), method: :delete %>
         <% end %>
     </div>
 </div>
