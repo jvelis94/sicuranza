@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'invoices/paid', to: 'invoices#paid', as: 'paid_invoices'
   get 'invoices/unpaid', to: 'invoices#unpaid', as: 'unpaid_invoices'
   get 'estimates', to: 'invoices#estimates', as: 'estimates'
-  delete 'contractors/:id/delete_file/:id', to: 'contractors#delete_file_attachment', as: 'delete_file'
+  delete 'contractors/delete_file/:id', to: 'contractors#delete_file_attachment', as: 'delete_file'
 
   resources :work_orders do
     resources :invoices
