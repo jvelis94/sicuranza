@@ -1,0 +1,23 @@
+<div class='main-content'>
+    <h1 class='form-titles'>Edit Contractor</h1>
+
+    <%= simple_form_for(@contractor, html: { multipart: true}) do |f| %>
+
+    <div id='customer-info'>
+        <%= f.input :name, label: 'Name:' %>
+        <%= f.input :address1, label: 'Street Address:' %>
+        <section id='city-state-zip-grid'>
+        <%= f.input :city, label: 'City:' %>
+        <%= f.input :state, label: 'State:' %>
+        <%= f.input :zip, label: 'Zip:' %>
+        </section>
+        <section id='phone-email-grid'>
+        <%= f.input :phone, type: 'number', label: 'Phone:' %> <br>
+        <%= f.file_field :files, multiple: true, direct_upload: true%>
+        </section>
+
+        <br>
+
+        <%= f.button :submit, 'Create Contractor', class: 'btn btn-primary' %>
+    <% end %>
+</div>

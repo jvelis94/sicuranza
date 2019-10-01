@@ -30,6 +30,7 @@ class ContractorsController < ApplicationController
 
     def update
         @contractor.update(contractor_params)
+        redirect_to contractor_path(@contractor)
     end
 
     def destroy
@@ -38,6 +39,13 @@ class ContractorsController < ApplicationController
 
     def options
     end
+
+    def delete_file_attachment
+        @contractor_file = ActiveStorage::Attachment.find(params[:id])
+        @contractor_file.purge
+        redirect_back(fallback_location: contractor_path)
+
+      end
     
 
     private
