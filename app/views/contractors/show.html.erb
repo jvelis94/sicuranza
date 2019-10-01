@@ -9,10 +9,15 @@
         </div>
 
     <h1 class='form-titles'>Files</h1>
+
+    
     <div class='menu-actions'>
         <% @contractor.files.each do |file| %>
             <%= link_to file.filename, file, target: :blank %>
-            <%= link_to 'Remove', delete_file_path(file.id), method: :delete %>
+            
+            <%= link_to delete_file_path(file.id), method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
         <% end %>
     </div>
 </div>
