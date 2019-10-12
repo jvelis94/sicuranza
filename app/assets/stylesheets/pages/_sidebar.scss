@@ -28,14 +28,22 @@
     }
 
     #dashboard-items-mobile {
+      display: contents;
+    }
+
+    #options-top {
         display: flex;
+        justify-content: space-around;
         background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0px 0px 27px 4px rgba(224,224,224,1);
         overflow: scroll;
         margin-bottom: 20px;
         padding: 10px;
-        
+    }
+
+    #option-dropdowns {
+      margin-bottom: 20px;
     }
 
     #dashboard-items-mobile div {
@@ -47,14 +55,32 @@
         padding: 5px;
         display: flex;
         align-items: center;
-        margin-right: 8px;
+        justify-content: center;
     }
 
-    #dashboard-items-mobile a {
-        border-radius: 50%;
-        width: 60px;
-        text-align: center;
+    #dashboard-items-mobile div i {
+      margin: 0px;
+      font-size: 40px;
     }
+
+    .work-order-toggle, .punchlist-toggle, .contractor-toggle {
+      display: none;
+    }
+
+    .work-order-active, .punchlist-active, .contractor-active {
+      display: contents;
+    }
+
+    #dashboard-items-mobile ul {
+      list-style-type: none;
+      text-align: center;
+    }
+
+    // #dashboard-items-mobile a {
+    //     border-radius: 50%;
+    //     width: 60px;
+    //     text-align: center;
+    // }
 
     
 }
