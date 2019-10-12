@@ -46,3 +46,29 @@ addEventListener("direct-upload:initialize", event => {
     const element = document.getElementById(`direct-upload-${id}`)
     element.classList.add("direct-upload--complete")
   })
+
+  function toggleWorkOrder() {
+    var element = document.querySelector(".work-order-toggle");
+    var hidePunchlist = document.querySelector(".punchlist-active");
+    var hideContractor = document.querySelector(".contractor-active");
+    if (hidePunchlist) { hidePunchlist.classList.toggle("punchlist-active") }
+    if (hideContractor) { hideContractor.classList.toggle("contractor-active") }
+    element.classList.toggle("work-order-active");
+  }
+  function togglePunchList() {
+    var element = document.querySelector(".punchlist-toggle");
+    var hideWorkOrder = document.querySelector(".work-order-active");
+    var hideContractor = document.querySelector(".contractor-active");
+    if (hideWorkOrder) { hideWorkOrder.classList.toggle("work-order-active") }
+    if (hideContractor) { hideContractor.classList.toggle("contractor-active") }
+    element.classList.toggle("punchlist-active");
+  }
+  function toggleContractor() {
+    var element = document.querySelector(".contractor-toggle");
+    var hidePunchlist = document.querySelector(".punchlist-active");
+    var hideWorkOrder = document.querySelector(".work-order-active");
+    if (hidePunchlist) { hidePunchlist.classList.toggle("punchlist-active") }
+    if (hideWorkOrder) { hideWorkOrder.classList.toggle("work-order-active") }
+    element.classList.toggle("contractor-active");
+  }
+  

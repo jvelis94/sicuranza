@@ -14,27 +14,37 @@
         <li><%= link_to "New Punchlist", new_jobpunchlist_path %></li>
         <li><%= link_to "View Punchlists", jobpunchlists_path %></li>
     </ul>
-    <h5><i class="fas fa-tasks"></i>Contractors</h5>
+    <h5><i class="fas fa-user"></i>Contractors</h5>
     <ul>    
         <li><%= link_to "Add Contractor", new_contractor_path %></li>
         <li><%= link_to "View Contractors", contractors_path %></li>
     </ul>
-    <h5><i class="fas fa-user"></i>Employees</h5>
-    <ul>    
-        <li><a href="CALSHOW://">iOS Calendar</a></li>
+    <h5><i class="fas fa-calendar-alt">Calendar</i></h5>
+    <ul> 
         <li><a href="googlecalendar://">Google Calendar</a></li>
-
     </ul>
 </div>
 
 <div id='dashboard-items-mobile'>
-    <div><%= link_to "NW", new_work_order_path %></div>
-    <div><%= link_to "VW", work_orders_path %></div>
-    <div><%= link_to "Is", invoices_path %></div>
-    <div><%= link_to "NPL", new_jobpunchlist_path %></div>
-    <div><%= link_to "Ps", jobpunchlists_path %></div>
-    <div><%= link_to "AC", new_contractor_path %></div>
-    <div><%= link_to "Cs", contractors_path %></div>
-    <div><a href="CALSHOW://">iCal</a> </div>
-    <div><a href="googlecalendar://">gCal</a> </div>
+    <section id='options-top'>
+        <div onClick="toggleWorkOrder()"><i class="fas fa-file-invoice-dollar"></i></i></div>
+        <div onClick="togglePunchList()"><i class="fas fa-tasks"></i></div>
+        <div onClick="toggleContractor()"><i class="fas fa-user"></i>   </div>
+        <div><a href="googlecalendar://"><i class="fas fa-calendar-alt"></i></a></div>
+    </section>
+    <section id='option-dropdowns'>
+        <ul class='work-order-toggle'>
+            <li><%= link_to "New Work Order", new_work_order_path %></li>
+            <li><%= link_to "Work Orders", work_orders_path %></li>
+            <li><%= link_to "Invoices", invoices_path %></li>
+        </ul>
+        <ul class='punchlist-toggle'>
+            <li><%= link_to "New Punchlist", new_jobpunchlist_path %></li>
+            <li><%= link_to "Punchlists", jobpunchlists_path %></li>
+        </ul>
+        <ul class='contractor-toggle'>
+            <li><%= link_to "Add Contractor", new_contractor_path %></li>
+            <li><%= link_to "Contractors", contractors_path %></li>
+        </ul>
+    </section>
 </div>

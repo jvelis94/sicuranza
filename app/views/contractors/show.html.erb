@@ -14,7 +14,6 @@
     <div class='menu-actions'>
         <% @contractor.files.each do |file| %>
             <%= link_to file.filename, file, target: :blank %>
-            
             <%= link_to delete_file_path(file.id), method: :delete do %>
                 <i class="fas fa-trash-alt"></i>
             <% end %>
