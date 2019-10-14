@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+
+  devise_scope :user do 
+    authenticated :user do
+      root 'pages#home', as: :authenticated_root
+    end
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+    
   resources :pages, only: [:options]
   get 'work_orders/options', to: 'work_orders#options', as: 'work_order_options'
   get 'contractors/options', to: 'contractors#options', as: 'contractors_options'
