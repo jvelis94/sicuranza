@@ -15,6 +15,50 @@
     text-decoration: none;
 }
 
+#vertical-line {
+    border: 1px solid #949494;
+    height: 100%;
+    margin: 0px;
+}
+
+#section-a {
+    grid-area: invoices;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+// #section-a div {
+//     margin: 0 auto;
+// }
+
+#section-b {
+    grid-area: tasks;
+}
+
+#section-c {
+    grid-area: estimates;
+}
+
+#section-a, #section-b, #section-c {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 20px;
+}
+
+.home-dashboard {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "invoices invoices"
+    "tasks estimates";
+    column-gap: 25px;
+    row-gap: 25px;
+}
+
 
 @media (max-width: 600px)  {
     .menu-actions {
