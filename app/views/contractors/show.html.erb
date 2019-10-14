@@ -18,5 +18,11 @@
                 <i class="fas fa-trash-alt"></i>
             <% end %>
         <% end %>
+        <% @contractor.blueprints.each do |blueprint| %>
+            <%= link_to blueprint.filename, blueprint, target: :blank %>
+            <%= link_to delete_file_path(blueprint.id), method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+        <% end %>
     </div>
 </div>

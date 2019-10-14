@@ -13,7 +13,14 @@
         </section>
         <section id='phone-email-grid'>
         <%= f.input :phone, type: 'number', label: 'Phone:' %> <br>
-        <%= f.file_field :files, multiple: true, direct_upload: true%>
+        <div>
+            <%= f.label :files, 'Upload files' %><br>
+            <%= f.file_field :files, multiple: true, direct_upload: true%>
+        </div>
+        <div>
+            <%= f.label :blueprints, 'Upload blueprints' %><br>
+            <%= f.file_field :blueprints, multiple: true, direct_upload: true%>
+        </div>
         </section>
 
         <br>
