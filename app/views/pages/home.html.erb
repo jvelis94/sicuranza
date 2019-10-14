@@ -2,7 +2,29 @@
     <h1 class='form-titles'>Dashboard</h1>
 
     <h3 style='text-align: center'>Welcome to your dedicated dashboard. Please select a menu item on the left to begin your productivity</h3>
+    <%= simple_form_for @task do |f| %>
+        <%= f.input :name, label: 'Task:'%>
+        <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
+    <% end %>
 
+    <ul>
+        <% @tasks.each do |task| %>
+            <% if task.status === 'done' %>
+            <strike>
+            <li>
+                <span><%= task.name %><span> 
+                <span><%= task.status %></span>
+            </li>
+            </strike>
+            <% else %>
+            <li>
+                <span><%= task.name %><span> 
+                <span><%= task.status %></span>
+                <span><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></span>
+            </li>
+            <% end %>
+        <% end %>
+    </ul>
 </div>
 
 

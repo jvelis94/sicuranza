@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_184434) do
+ActiveRecord::Schema.define(version: 2019_10_14_170436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 2019_09_30_184434) do
     t.index ["jobpunchlist_id"], name: "index_punchlistitems_on_jobpunchlist_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -135,5 +144,6 @@ ActiveRecord::Schema.define(version: 2019_09_30_184434) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "invoices", "work_orders"
   add_foreign_key "punchlistitems", "jobpunchlists"
+  add_foreign_key "tasks", "users"
   add_foreign_key "work_orders", "users"
 end
