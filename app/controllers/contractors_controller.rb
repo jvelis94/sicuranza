@@ -51,7 +51,7 @@ class ContractorsController < ApplicationController
     private
 
     def contractor_params
-        params.require(:contractor).permit(:name, :address1, :city, :state, :zip, :phone, files: [])
+        params.require(:contractor).permit(:name, :address1, :city, :state, :zip, :phone, files: [], blueprints: [])
     end
 
     def set_contractor
