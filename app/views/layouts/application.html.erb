@@ -14,10 +14,16 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class='page-container'>
-      <%= render 'shared/sidebar' %>
-      <%= yield %>
-      <div id='remote_container'></div>
-    </div>
+    <% if user_signed_in? %>
+      <div class='page-container'>
+        <%= render 'shared/sidebar' %>
+        <%= yield %>
+      </div>
+    <% else %>
+      <div style='margin: 0px 20px'>
+        <%= yield %>
+      </div>
+    <% end %>  
+      <%# <div id='remote_container'></div> %>
   </body>
 </html>
