@@ -105,7 +105,7 @@
             <h3>My Timesheet</h3>
             <p>For the week of: <%= (@time.beginning_of_week).strftime('%m/%d/%Y') %> - <%= (@time.end_of_week).strftime('%m/%d/%Y') %>
             <%= simple_form_for @timesheet do |f| %>
-                <%= f.input :today, label: 'Today:' %>
+                <%= f.input :today, label: 'Date:' %>
                 <div style= 'display: none'>
                     <%= f.input :week_start %>
                     <%= f.input :week_end %>
