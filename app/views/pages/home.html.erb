@@ -1,72 +1,93 @@
 <div class="home-dashboard">
-    <section id='section-a'>
+    <section id='section-a-paid'>
         <div>
-            <h3>Paid Invoices:</h3>
-            <h4 style='text-align: center'>$<%= @paid_invoices_sum %></h4>
+            <h2>$<%= @paid_invoices_sum %></h2>
+            <h5 style='text-align: center'>Paid Invoices</h5>
         </div>
-        <div id='vertical-line'></div>
+    </section>
+    <section id='section-a-unpaid'>
         <div>
-            <h3>Unpaid Invoices:</h3>
-            <h4 style='text-align: center'>$<%= @unpaid_invoices_sum %></h4>
+            <h2>$<%= @unpaid_invoices_sum %></h2>
+            <h5 style='text-align: center'>Unpaid Invoices</h5>
         </div>
     </section>
     <section id='section-b'>
     <h4>My Outstanding Estimates</h4>
-        <ul>
-            <% @estimates_todos.each do |todo| %>
-                <% if todo.status === 'done' %>
-                <strike>
-                <li>
-                    <span><%= todo.client %><span> 
-                    <span><%= todo.project %></span>
-                </strike>
-                | <%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %> 
-                </li>
-                <% else %>
-                <li>
-                    <span><%= todo.client %><span> 
-                    <span><%= todo.project %></span>
-                    <span><%= todo.blueprint_email_date %></span>
-                    <span><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></span>
-                </li>
-                <% end %>
-            <% end %>
-        </ul>
-        <br>
         <%= simple_form_for @estimates_todo do |f| %>
             <div id='estimate-todo-form'>
                 <%= f.input :client, label: 'Client:' %>
                 <%= f.input :project, label: 'Project:' %>
+                <%= f.input :blueprint_email_date, label: 'Email Date:'%>
             </div>
-            <%= f.input :blueprint_email_date, label: 'Email Date:'%>
             <%= f.button :submit, 'Add Estimate', class: 'btn btn-primary' %>
         <% end %>
+        <br>
+        <table id='estimate-todo-table'>
+            <thead>
+                <tr>
+                    <td>Client</td>
+                    <td>Project</td>
+                    <td>Blueprint Email Date</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+            <% @estimates_todos.each do |todo| %>
+                <% if todo.status === 'done' %>
+                <tr>
+                    <td><s><%= todo.client %></s></td>
+                    <td><s><%= todo.project %><s></td>
+                    <td><s><%= todo.blueprint_email_date %><s></td>
+                    <td><s>Done<s></td>
+                    <td><%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                </tr>
+                <% else %>
+                <tr>
+                    <td><%= todo.client %></td> 
+                    <td><%= todo.project %></td>
+                    <td><%= todo.blueprint_email_date %></td>
+                    <td>Not Done</td>
+                    <td><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></td>
+                </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+        </table>
     </section>
     <section id='section-c'>
         <h4>My Tasks</h4>
-        <ul>
-            <% @tasks.each do |task| %>
-                <% if task.status === 'done' %>
-                <li>
-                <strike>
-                    <span><%= task.name %><span> 
-                    <span><%= task.status %></span>
-                </strike>
-                    | <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %> 
-                </li>
-                <% else %>
-                <li>
-                    <span><%= task.name %><span> 
-                    <span><%= task.status %> -- <%= link_to 'Mark as Complete', done_task_path(task), method: :patch %>
-                </li>
-                <% end %>
-            <% end %>
-        </ul>
-        <br>
         <%= simple_form_for @task do |f| %>
             <%= f.input :name, label: 'Task:'%>
             <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
         <% end %>
+        <br>
+        <table id='estimate-todo-table'>
+            <thead>
+                <tr>
+                    <td>Task</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+            <% @tasks.each do |task| %>
+                <% if task.status === 'done' %>
+                <tr>
+                    <td><s><%= task.name %></s></td> 
+                    <td><s><%= task.status %></s></td>
+                    <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                </tr>
+                <% else %>
+                <tr>
+                    <td><%= task.name %></td> 
+                    <td><%= 'Not Done' %> </td>
+                    <td><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></td>
+                </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+        </table>
     </section>
 </div>
 

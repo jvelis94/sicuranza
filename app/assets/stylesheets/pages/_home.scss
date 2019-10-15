@@ -15,22 +15,21 @@
     text-decoration: none;
 }
 
-#vertical-line {
-    border: 1px solid #949494;
-    height: 100%;
-    margin: 0px;
-}
-
-#section-a {
-    grid-area: invoices;
-    display: flex;
-    justify-content: space-evenly;
+#section-a-paid {
+    grid-area: paidinvoices;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
     align-items: center;
 }
 
-// #section-a div {
-//     margin: 0 auto;
-// }
+#section-a-unpaid {
+    grid-area: unpaidinvoices;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    align-items: center;
+}
 
 #section-b {
     grid-area: tasks;
@@ -40,7 +39,7 @@
     grid-area: estimates;
 }
 
-#section-a, #section-b, #section-c {
+#section-a-paid, #section-a-unpaid, #section-b, #section-c {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px 20px;
@@ -51,9 +50,9 @@
     overflow-x: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
     grid-template-areas: 
-    "invoices invoices"
+    "paidinvoices unpaidinvoices"
     "tasks estimates";
     column-gap: 25px;
     row-gap: 25px;
@@ -61,11 +60,26 @@
 
 #estimate-todo-form {
     display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr; 
     column-gap: 10px;
 }
 
+#estimate-todo-table {
+    margin-top: 10px;
+    width: 100%;
+}
 
+#estimate-todo-table thead {
+    font-size: 0.9rem;
+}
+
+#estimate-todo-table tbody td {
+    padding: 8px 0px;
+}
+
+#estimate-todo-table tbody tr {
+    border-bottom: 0.5px solid #949494;;
+}
 
 @media (max-width: 600px)  {
     .menu-actions {
