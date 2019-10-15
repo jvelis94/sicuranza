@@ -32,6 +32,10 @@ class TasksController < ApplicationController
 
     def destroy
         @task.destroy
+        respond_to do |format|
+            format.html { redirect_to authenticated_root_path, notice: 'Task was successfully destroyed.' }
+            format.json { head :no_content }
+          end
     end
     
     def done
