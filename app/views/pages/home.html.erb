@@ -11,56 +11,62 @@
         </div>
     </section>
     <section id='section-b'>
-    <h4>My Tasks</h4>
-        <%= simple_form_for @task do |f| %>
-            <%= f.input :name, label: 'Task:'%>
-            <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
-        <% end %>
-
+    <h4>My Outstanding Estimates</h4>
         <ul>
-            <% @tasks.each do |task| %>
-                <% if task.status === 'done' %>
+            <% @estimates_todos.each do |todo| %>
+                <% if todo.status === 'done' %>
                 <strike>
                 <li>
-                    <span><%= task.name %><span> 
-                    <span><%= task.status %></span>
-                </li>
+                    <span><%= todo.client %><span> 
+                    <span><%= todo.project %></span>
                 </strike>
+                | <%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %> 
+                </li>
                 <% else %>
                 <li>
-                    <span><%= task.name %><span> 
-                    <span><%= task.status %></span>
-                    <span><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></span>
+                    <span><%= todo.client %><span> 
+                    <span><%= todo.project %></span>
+                    <span><%= todo.blueprint_email_date %></span>
+                    <span><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></span>
                 </li>
                 <% end %>
             <% end %>
         </ul>
+        <br>
+        <%= simple_form_for @estimates_todo do |f| %>
+            <div id='estimate-todo-form'>
+                <%= f.input :client, label: 'Client:' %>
+                <%= f.input :project, label: 'Project:' %>
+            </div>
+            <%= f.input :blueprint_email_date, label: 'Email Date:'%>
+            <%= f.button :submit, 'Add Estimate', class: 'btn btn-primary' %>
+        <% end %>
     </section>
     <section id='section-c'>
         <h4>My Tasks</h4>
-        <%= simple_form_for @task do |f| %>
-            <%= f.input :name, label: 'Task:'%>
-            <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
-        <% end %>
-        <br>
         <ul>
             <% @tasks.each do |task| %>
                 <% if task.status === 'done' %>
-                <strike>
                 <li>
+                <strike>
                     <span><%= task.name %><span> 
                     <span><%= task.status %></span>
-                </li>
                 </strike>
+                    | <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %> 
+                </li>
                 <% else %>
                 <li>
                     <span><%= task.name %><span> 
-                    <span><%= task.status %></span>
-                    <span><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></span>
+                    <span><%= task.status %> -- <%= link_to 'Mark as Complete', done_task_path(task), method: :patch %>
                 </li>
                 <% end %>
             <% end %>
         </ul>
+        <br>
+        <%= simple_form_for @task do |f| %>
+            <%= f.input :name, label: 'Task:'%>
+            <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
+        <% end %>
     </section>
 </div>
 

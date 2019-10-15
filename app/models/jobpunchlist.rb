@@ -1,4 +1,4 @@
 class Jobpunchlist < ApplicationRecord
-    has_many :punchlistitems
+    has_many :punchlistitems, dependent: :destroy
 
 end

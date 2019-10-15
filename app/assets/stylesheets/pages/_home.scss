@@ -59,6 +59,13 @@
     row-gap: 25px;
 }
 
+#estimate-todo-form {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    column-gap: 10px;
+}
+
+
 
 @media (max-width: 600px)  {
     .menu-actions {
