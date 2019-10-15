@@ -1,4 +1,14 @@
 <div class='main-content'>
+    <div class='form-row'>
+    <%= form_tag work_orders_path, style: 'display: flex', method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Enter search query"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary"%>
+    <% end %>
+    </div><br>
     <table class='work-orders' style='overflow-y: scroll;'>
         <thead>
             <tr>
@@ -7,7 +17,7 @@
                 <td>Technician</td>
                 <td>Location</td>
                 <td>Customer Name</td>
-                `<% if current_user.email === 'info@gsicuranza.com' %>`
+                <% if current_user.email === 'info@gsicuranza.com' %>
                 <td colspan='3'>Invoice</td>
                 <% end %>
             </tr>

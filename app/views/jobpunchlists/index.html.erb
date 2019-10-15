@@ -1,6 +1,15 @@
 <div class='main-content'>
     <h1 class='form-titles'>Punchlists</h1>
-
+<div class='form-row'>
+    <%= form_tag jobpunchlists_path, style: 'display: flex', method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Enter search query"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary"%>
+    <% end %>
+    </div><br>
 <% @jobpunchlists.each do |jobpunchlist| %>
 <div class="index_row clearfix">
     <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
@@ -13,6 +22,6 @@
 
 <div class="links">
     <%= link_to "New Todo List", new_jobpunchlist_path %><br/>
-    <%= link_to "Home", root_path %>
+    <%= link_to "Home", authenticated_root_path %>
 </div>
 </div>

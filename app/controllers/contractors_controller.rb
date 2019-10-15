@@ -2,7 +2,12 @@ class ContractorsController < ApplicationController
     before_action :set_contractor, only: [:show, :edit, :update, :destroy]
             
     def index
-        @contractors = Contractor.all
+        if params[:query].present?
+            sql_query = "name ILIKE :query OR address1 ILIKE :query OR city ILIKE :query OR CAST(phone AS text) ILIKE :query OR CAST(zip AS text) ILIKE :query"
+            @contractors = Contractor.where(sql_query, query: "%#{params[:query]}%")
+        else
+            @contractors = Contractor.all
+        end
     end
 
     def show

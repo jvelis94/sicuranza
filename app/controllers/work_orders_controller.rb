@@ -2,8 +2,14 @@ class WorkOrdersController < ApplicationController
     before_action :set_work_order, only: [:show, :edit, :update, :destroy]
             
     def index
-        @work_orders = WorkOrder.all
-        @invoices = Invoice.all
+        if params[:query].present?
+            sql_query = "customer_name ILIKE :query OR technician ILIKE :query OR location ILIKE :query OR CAST(date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query"
+            @work_orders = WorkOrder.where(sql_query, query: "%#{params[:query]}%")
+            @invoices = Invoice.all
+        else
+            @work_orders = WorkOrder.all
+            @invoices = Invoice.all
+        end
     end
 
     def show
