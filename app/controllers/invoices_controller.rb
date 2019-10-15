@@ -4,7 +4,12 @@ class InvoicesController < ApplicationController
 
             
     def index
-        @invoices = Invoice.all        
+        if params[:query].present?
+            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
+        else
+            @invoices = Invoice.all
+        end
     end
 
     def show
@@ -57,7 +62,7 @@ class InvoicesController < ApplicationController
         @invoice.update(invoice_params)
             @invoice.subtotal = @invoice.details.map(&:amount).reduce(:+)
             @invoice.total = @invoice.subtotal * (1 + @invoice.tax)
-            @invoice.balance_remaining = @invoice.total + @invoice.payments_credits
+            @invoice.balance_remaining = @invoice.total - @invoice.payments_credits
          if @invoice.update(invoice_params)
             flash[:success] = "Product was successfully updated"
           else
@@ -71,15 +76,30 @@ class InvoicesController < ApplicationController
     end
 
     def paid
-        @invoices = Invoice.all  
+        if params[:query].present?
+            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
+        else
+            @invoices = Invoice.all
+        end
     end
 
     def unpaid
-        @invoices = Invoice.all  
+        if params[:query].present?
+            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
+        else
+            @invoices = Invoice.all
+        end
     end
 
     def estimates
-        @invoices = Invoice.all  
+        if params[:query].present?
+            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
+        else
+            @invoices = Invoice.all
+        end
     end
     
 

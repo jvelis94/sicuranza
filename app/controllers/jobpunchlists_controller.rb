@@ -4,7 +4,12 @@ class JobpunchlistsController < ApplicationController
   # GET /jobpunchlists
   # GET /jobpunchlists.json
   def index
-    @jobpunchlists = Jobpunchlist.all
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR description ILIKE :query"
+      @jobpunchlists = Jobpunchlist.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @jobpunchlists = Jobpunchlist.all
+    end
   end
 
   # GET /jobpunchlists/1

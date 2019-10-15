@@ -1,5 +1,15 @@
 <div class='main-content'>
     <h1 class='form-titles'>Contractors</h1>
+    <div class='form-row'>
+    <%= form_tag contractors_path, style: 'display: flex', method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Enter search query"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary"%>
+    <% end %>
+    </div><br>
     <div class='menu-actions'>
         <% @contractors.each do |contractor| %>
             <%= link_to contractor.name, contractor_path(contractor) %>
