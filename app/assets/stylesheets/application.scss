@@ -56,7 +56,7 @@ i {
   padding: 20px 20px;
   background-color: #ffffff;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
 }
 
 #punchlistitems td{
@@ -88,7 +88,7 @@ i {
   
 }
 
-@media (max-width: 600px)  {
+@media (max-width: 768px)  {
   .page-container {
     margin: 20px 20px;
     display: block;
