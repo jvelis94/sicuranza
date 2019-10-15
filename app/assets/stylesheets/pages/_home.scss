@@ -39,13 +39,13 @@
     grid-area: estimates;
 }
 
-#section-a-paid, #section-a-unpaid, #section-b, #section-c {
+#section-a-paid, #section-a-unpaid, #section-b, #section-c, #contractors-list, #timesheet {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px 20px;
 }
 
-.home-dashboard {
+.home-dashboard-admin {
     overflow-y: scroll;
     overflow-x: hidden;
     display: grid;
@@ -56,6 +56,13 @@
     "tasks estimates";
     column-gap: 25px;
     row-gap: 25px;
+}
+
+.home-dashboard-employee {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 25px;
 }
 
 #estimate-todo-form {
