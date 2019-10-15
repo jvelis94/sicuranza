@@ -14,19 +14,20 @@
 
     
     <div class='menu-actions'>
-        <% @contractor.files.each do |file| %>
-            <%= link_to file.filename, file, target: :blank %>
-            <%= link_to delete_file_path(file.id), method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
+        <% if current_user.email === 'info@gsicuranza.com' %>
+            <% @contractor.files.each do |file| %>
+                <%= link_to file.filename, file, target: :blank %>
+                <%= link_to delete_file_path(file.id), method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
+                <% end %>
             <% end %>
         <% end %>
-        <% if current_user.email === 'info@gsicuranza.com' %>
             <% @contractor.blueprints.each do |blueprint| %>
                 <%= link_to blueprint.filename, blueprint, target: :blank %>
                 <%= link_to delete_file_path(blueprint.id), method: :delete do %>
                     <i class="fas fa-trash-alt"></i>
                 <% end %>
             <% end %>
-        <% end %>
+        
     </div>
 </div>

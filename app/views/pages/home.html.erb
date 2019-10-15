@@ -1,94 +1,127 @@
-<div class="home-dashboard">
-    <section id='section-a-paid'>
-        <div>
-            <h2>$<%= @paid_invoices_sum %></h2>
-            <h5 style='text-align: center'>Paid Invoices</h5>
-        </div>
-    </section>
-    <section id='section-a-unpaid'>
-        <div>
-            <h2>$<%= @unpaid_invoices_sum %></h2>
-            <h5 style='text-align: center'>Unpaid Invoices</h5>
-        </div>
-    </section>
-    <section id='section-b'>
-    <h4>My Outstanding Estimates</h4>
-        <%= simple_form_for @estimates_todo do |f| %>
-            <div id='estimate-todo-form'>
-                <%= f.input :client, label: 'Client:' %>
-                <%= f.input :project, label: 'Project:' %>
-                <%= f.input :blueprint_email_date, label: 'Email Date:'%>
+<% if current_user.email === 'info@gsicuranza.com' %>
+    <div class="home-dashboard-admin">
+        <section id='section-a-paid'>
+            <div>
+                <h2>$<%= @paid_invoices_sum %></h2>
+                <h5 style='text-align: center'>Paid Invoices</h5>
             </div>
-            <%= f.button :submit, 'Add Estimate', class: 'btn btn-primary' %>
-        <% end %>
-        <br>
-        <table id='estimate-todo-table'>
-            <thead>
-                <tr>
-                    <td>Client</td>
-                    <td>Project</td>
-                    <td>Blueprint Email Date</td>
-                    <td>Status</td>
-                    <td>Action</td>
-                </tr>
-            </thead>
-            <tbody>
-            <% @estimates_todos.each do |todo| %>
-                <% if todo.status === 'done' %>
-                <tr>
-                    <td><s><%= todo.client %></s></td>
-                    <td><s><%= todo.project %><s></td>
-                    <td><s><%= todo.blueprint_email_date %><s></td>
-                    <td><s>Done<s></td>
-                    <td><%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %></td>
-                </tr>
-                <% else %>
-                <tr>
-                    <td><%= todo.client %></td> 
-                    <td><%= todo.project %></td>
-                    <td><%= todo.blueprint_email_date %></td>
-                    <td>Not Done</td>
-                    <td><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></td>
-                </tr>
-                <% end %>
+        </section>
+        <section id='section-a-unpaid'>
+            <div>
+                <h2>$<%= @unpaid_invoices_sum %></h2>
+                <h5 style='text-align: center'>Unpaid Invoices</h5>
+            </div>
+        </section>
+        <section id='section-b'>
+        <h4>My Outstanding Estimates</h4>
+            <%= simple_form_for @estimates_todo do |f| %>
+                <div id='estimate-todo-form'>
+                    <%= f.input :client, label: 'Client:' %>
+                    <%= f.input :project, label: 'Project:' %>
+                    <%= f.input :blueprint_email_date, label: 'Email Date:'%>
+                </div>
+                <%= f.button :submit, 'Add Estimate', class: 'btn btn-primary' %>
             <% end %>
-            </tbody>
-        </table>
-    </section>
-    <section id='section-c'>
-        <h4>My Tasks</h4>
-        <%= simple_form_for @task do |f| %>
-            <%= f.input :name, label: 'Task:'%>
-            <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
-        <% end %>
-        <br>
-        <table id='estimate-todo-table'>
-            <thead>
-                <tr>
-                    <td>Task</td>
-                    <td>Status</td>
-                    <td>Action</td>
-                </tr>
-            </thead>
-            <tbody>
-            <% @tasks.each do |task| %>
-                <% if task.status === 'done' %>
-                <tr>
-                    <td><s><%= task.name %></s></td> 
-                    <td><s><%= task.status %></s></td>
-                    <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></td>
-                </tr>
-                <% else %>
-                <tr>
-                    <td><%= task.name %></td> 
-                    <td><%= 'Not Done' %> </td>
-                    <td><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></td>
-                </tr>
+            <br>
+            <table id='estimate-todo-table'>
+                <thead>
+                    <tr>
+                        <td>Client</td>
+                        <td>Project</td>
+                        <td>Blueprint Email Date</td>
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @estimates_todos.each do |todo| %>
+                    <% if todo.status === 'done' %>
+                    <tr>
+                        <td><s><%= todo.client %></s></td>
+                        <td><s><%= todo.project %><s></td>
+                        <td><s><%= todo.blueprint_email_date %><s></td>
+                        <td><s>Done<s></td>
+                        <td><%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    </tr>
+                    <% else %>
+                    <tr>
+                        <td><%= todo.client %></td> 
+                        <td><%= todo.project %></td>
+                        <td><%= todo.blueprint_email_date %></td>
+                        <td>Not Done</td>
+                        <td><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></td>
+                    </tr>
+                    <% end %>
                 <% end %>
+                </tbody>
+            </table>
+        </section>
+        <section id='section-c'>
+            <h4>My Tasks</h4>
+            <%= simple_form_for @task do |f| %>
+                <%= f.input :name, label: 'Task:'%>
+                <%= f.button :submit, 'Add Task', class: 'btn btn-primary' %>
             <% end %>
-            </tbody>
-        </table>
-    </section>
-</div>
+            <br>
+            <table id='estimate-todo-table'>
+                <thead>
+                    <tr>
+                        <td>Task</td>
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @tasks.each do |task| %>
+                    <% if task.status === 'done' %>
+                    <tr>
+                        <td><s><%= task.name %></s></td> 
+                        <td><s><%= task.status %></s></td>
+                        <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    </tr>
+                    <% else %>
+                    <tr>
+                        <td><%= task.name %></td> 
+                        <td><%= 'Not Done' %> </td>
+                        <td><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></td>
+                    </tr>
+                    <% end %>
+                <% end %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+<% else %>
+    <div class=home-dashboard-employee>
+        <section id='contractors-list'>
+            <h3>Contractors</h3>
+            <div class='menu-actions'>
+                <% @contractors.each do |contractor| %>
+                    <%= link_to contractor.name, contractor_path(contractor) %>
+                <% end %>
+            </div>
+        </section>
+        <section id='timesheet'>
+            <h3>My Timesheet</h3>
+            <p>For the week of: <%= (@time.beginning_of_week).strftime('%m/%d/%Y') %> - <%= (@time.end_of_week).strftime('%m/%d/%Y') %>
+            <%= simple_form_for @timesheet do |f| %>
+                <%= f.input :today, label: 'Today:' %>
+                <div style= 'display: none'>
+                    <%= f.input :week_start %>
+                    <%= f.input :week_end %>
+                </div>
+                <div id='estimate-todo-form'>
+                    <%= f.input :hours_worked_today, label: 'Hours worked:'%>
+                    <%= f.input :notes, label: 'Notes:'%>
+                </div>
+                <%= f.button :submit, 'Add Time', class: 'btn btn-primary' %>
+            <% end %><br>
+            <h3><%= @hours_worked_this_week %></h3>
+            <h5>Hours worked this week</h5>
+            <%= @weeks %>
+        <section>
+    </div>
+<% end %>
+
 
 
