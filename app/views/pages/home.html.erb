@@ -28,7 +28,7 @@
                     <tr>
                         <td>Client</td>
                         <td>Project</td>
-                        <td>Blueprint Email Date</td>
+                        <td>Email Date</td>
                         <td>Status</td>
                         <td>Action</td>
                     </tr>
@@ -41,7 +41,10 @@
                         <td><s><%= todo.project %><s></td>
                         <td><s><%= todo.blueprint_email_date %><s></td>
                         <td><s>Done<s></td>
-                        <td><%= link_to 'Delete', estimates_todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                        <td><%= link_to estimates_todo_path(todo), method: :delete do %>
+                            <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                        </td>
                     </tr>
                     <% else %>
                     <tr>
@@ -49,7 +52,10 @@
                         <td><%= todo.project %></td>
                         <td><%= todo.blueprint_email_date %></td>
                         <td>Not Done</td>
-                        <td><%= link_to 'Mark as Complete', done_estimates_todo_path(todo), method: :patch %></td>
+                        <td><%= link_to done_estimates_todo_path(todo), method: :patch do %>
+                            <i class="fas fa-check"></i>
+                            <% end %>
+                        </td>
                     </tr>
                     <% end %>
                 <% end %>
@@ -77,13 +83,19 @@
                     <tr>
                         <td><s><%= task.name %></s></td> 
                         <td><s><%= task.status %></s></td>
-                        <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                        <td><%= link_to task_path(task), method: :delete do %>
+                            <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                        </td>
                     </tr>
                     <% else %>
                     <tr>
                         <td><%= task.name %></td> 
                         <td><%= 'Not Done' %> </td>
-                        <td><%= link_to 'Mark as Complete', done_task_path(task), method: :patch %></td>
+                        <td><%= link_to done_task_path(task), method: :patch do %>
+                            <i class="fas fa-check"></i>
+                            <% end %>
+                        </td>
                     </tr>
                     <% end %>
                 <% end %>

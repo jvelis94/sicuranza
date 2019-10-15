@@ -92,6 +92,11 @@
     border-bottom: 0.5px solid #949494;;
 }
 
+#section-b, #section-c {
+    white-space: nowrap;
+    overflow: auto;
+}  
+
 @media (max-width: 768px)  {
     .menu-actions {
         display: block;
@@ -109,11 +114,7 @@
     #estimate-todo-table td {
         padding: 0px;
     }
-
-    #section-b, #section-c {
-        white-space: nowrap;
-        overflow: auto;
-    }   
+ 
 }
 
 @media (max-width: 700px)  {
