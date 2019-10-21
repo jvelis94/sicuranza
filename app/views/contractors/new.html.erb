@@ -1,5 +1,5 @@
 <div class='main-content'>
-    <h1 class='form-titles'>New Contractor</h1>
+    <h1 class='form-titles'>New Customer</h1>
 
     <%= simple_form_for(@contractor, html: { multipart: true}) do |f| %>
 
@@ -14,17 +14,17 @@
         <section id='phone-email-grid'>
         <%= f.input :phone, type: 'number', label: 'Phone:' %> <br>
         <div>
-            <%= f.label :files, 'Upload files' %><br>
+            <%= f.label :files, 'Upload private files' %><br>
             <%= f.file_field :files, multiple: true, direct_upload: true%>
         </div>
         <div>
-            <%= f.label :blueprints, 'Upload blueprints' %><br>
+            <%= f.label :blueprints, 'Upload general files' %><br>
             <%= f.file_field :blueprints, multiple: true, direct_upload: true%>
         </div>
         </section>
 
         <br>
 
-        <%= f.button :submit, 'Create Contractor', class: 'btn btn-primary' %>
+        <%= f.button :submit, 'Create Customer', class: 'btn btn-primary' %>
     <% end %>
 </div>
