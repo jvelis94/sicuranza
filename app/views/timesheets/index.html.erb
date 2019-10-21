@@ -1,0 +1,33 @@
+<div class='invoice-box'>
+    <table class='work-orders' style='overflow-y: scroll;'>
+        <thead>
+            <tr>
+                <td style='font-weight: bold'>Day</td>
+                <td style='text-align: center; font-weight: bold'>Hours Worked</td>
+                <td style='text-align: center; font-weight: bold'>Employee</td>
+            </tr>
+        </thead>
+        <tbody>
+    <% @timesheets.each do |timesheet| %>
+        <% if current_user.id === timesheet.user.id %>
+            <tr>
+                <td><%= timesheet.today %></td>
+                <td style='text-align: center'><%= timesheet.hours_worked_today %></td>
+                <td style='text-align: center'><%= timesheet.user.first_name %> <%= timesheet.user.last_name %></td>
+                
+            </tr>
+        <% end %>
+        <% if current_user.email === 'info@gsicuranza.com' %>
+            <tr>
+                <td><%= timesheet.today %></td>
+                <td style='text-align: center'><%= timesheet.hours_worked_today %></td>
+                <td style='text-align: center'><%= timesheet.user.first_name %> <%= timesheet.user.last_name %></td>
+                
+            </tr>
+        <% end %>
+    <% end %>
+        </tbody>
+    </table>
+    <br>
+    <td><%= link_to 'PDF', timesheets_path(format: :pdf) %></td>
+</div>
