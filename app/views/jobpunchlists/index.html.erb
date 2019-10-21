@@ -10,16 +10,18 @@
         <%= submit_tag "Search", class: "btn btn-primary"%>
     <% end %>
     </div><br>
-<% @jobpunchlists.each do |jobpunchlist| %>
-<div class="index_row clearfix">
-    <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
-    <p class="jobpunchlist_sub_title"><%= jobpunchlist.description %></p>
+
+<div class='punchlist-menu'>
+    <% @jobpunchlists.each do |jobpunchlist| %>
+    <div class='punchlist'>
+        <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
+        <p class="jobpunchlist_sub_title"><%= jobpunchlist.description %></p>
+        <%= link_to 'Edit', edit_jobpunchlist_path(jobpunchlist) %> |
+        <%= link_to 'Delete', jobpunchlist_path(jobpunchlist), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+    <% end %>
 </div>
-<%= link_to 'Edit', edit_jobpunchlist_path(jobpunchlist) %> |
-<%= link_to 'Delete', jobpunchlist_path(jobpunchlist), method: :delete, data: { confirm: "Are you sure?" } %> |
-
-<% end %>
-
+<br>
 <div class="links">
     <%= link_to "New Todo List", new_jobpunchlist_path %><br/>
     <%= link_to "Home", authenticated_root_path %>

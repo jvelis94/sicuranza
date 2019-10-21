@@ -106,7 +106,7 @@
 <% else %>
     <div class=home-dashboard-employee>
         <section id='contractors-list'>
-            <h3>Contractors</h3>
+            <h3>Customers</h3>
             <div class='menu-actions'>
                 <% @contractors.each do |contractor| %>
                     <%= link_to contractor.name, contractor_path(contractor) %>
@@ -114,7 +114,7 @@
             </div>
         </section>
         <section id='timesheet'>
-            <h3>My Timesheet</h3>
+            <h3><%= current_user.first_name %>'s Timesheet</h3>
             <p>For the week of: <%= (@time.beginning_of_week).strftime('%m/%d/%Y') %> - <%= (@time.end_of_week).strftime('%m/%d/%Y') %>
             <%= simple_form_for @timesheet do |f| %>
                 <%= f.input :today, label: 'Date:' %>

@@ -1,5 +1,4 @@
 <div class="main-content">
-<%= link_to 'Paid Invoices', paid_invoices_path %> | <%= link_to 'Unpaid Invoices', unpaid_invoices_path %><br>
     <div class='form-row'>
     <%= form_tag estimates_path, style: 'display: flex', method: :get do %>
         <%= text_field_tag :query,
@@ -13,7 +12,7 @@
     <table class='work-orders' style='overflow: scroll;'>
         <thead>
             <tr>
-                <td>Invoice ID</td>
+                <td>Estimate ID</td>
                 <td>Job Date</td>
                 <td>Customer</td>
                 <td>Total</td>
@@ -28,9 +27,9 @@
                 <td><%= invoice.id %></td>
                 <td><%= invoice.job_date %></td>
                 <td><%= (invoice.bill_to_info).split('-')[0]%></td>
-                <td><%= invoice.balance_remaining %></td>
+                <td>$<%= invoice.balance_remaining %></td>
                 <td><%= invoice.project_name %></td>
-                <td><%= link_to 'Edit Invoice', edit_invoice_path(invoice) %></td>
+                <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
                 <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
                 <td><%= link_to 'PDF', invoice_path(invoice, format: :pdf) %></td>
             </tr>    

@@ -19,13 +19,13 @@
     <h5><i class="fas fa-user"></i>Contractors</h5>
     <ul>    
         <% if current_user.email === 'info@gsicuranza.com' %>
-        <li><%= link_to "Add Contractor", new_contractor_path %></li>
+        <li><%= link_to "Add Customer", new_contractor_path %></li>
         <% end %>
-        <li><%= link_to "View Contractors", contractors_path %></li>
+        <li><%= link_to "View Customers", contractors_path %></li>
     </ul>
     <h5><i class="fas fa-calendar-alt"></i>Calendar</h5>
-    <ul> 
-        <li><a href="googlecalendar://">Google Calendar</a></li>
+    <ul>
+        <li><a href="googlecalendar://">App</a> / <a href="https://calendar.google.com/calendar/r">Web</a></li>
     </ul>
 </div>
 
