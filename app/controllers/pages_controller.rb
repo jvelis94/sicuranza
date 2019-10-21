@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
-  
-
 
   def home
     @task = Task.new
@@ -12,6 +10,7 @@ class PagesController < ApplicationController
     @estimates_todos = EstimatesTodo.all
     @contractors = Contractor.all
     @timesheet = Timesheet.new
+    @timesheets = Timesheet.all
     @time = Time.now
     @weeks = Timesheet.where(user_id: current_user).group_by(&:week_start)
     @hours_worked_this_week = Timesheet.where(user_id: current_user, week_start: (Time.now).beginning_of_week).sum(:hours_worked_today)

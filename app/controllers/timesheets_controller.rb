@@ -3,6 +3,19 @@ class TimesheetsController < ApplicationController
             
     def index
         @timesheets = Timesheet.all
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: "Timesheet",
+                page_size: 'A4',
+                template: "timesheets/index.html.erb",
+                layout: "pdf.html",
+                orientation: "Portrait",
+                lowquality: true,
+                zoom: 1,
+                dpi: 75
+            end
+        end
     end
 
     def show

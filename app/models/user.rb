@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :work_orders, dependent: :destroy
   has_many :invoices, through: :work_orders
+  has_many :timesheets
 end
