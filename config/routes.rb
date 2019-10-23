@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :tasks do
     member do
       patch :done
+      patch :undo
     end
   end
 
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   resources :estimates_todos do
     member do
       patch :done
+      patch :undo
     end
   end
 

@@ -10,9 +10,11 @@
             <h3><%= @contractor.phone %></h3>
         </div>
 
-    <h1 class='form-titles'>Files</h1>
+    <% if current_user.email === 'info@gsicuranza.com' %>
+        <p>Notes: <%= @contractor.notes %></p>
+    <% end %>
 
-    
+    <h1 class='form-titles'>Files</h1>
     <div class='menu-actions'>
         <% if current_user.email === 'info@gsicuranza.com' %>
             <% @contractor.files.each do |file| %>

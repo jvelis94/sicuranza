@@ -44,6 +44,12 @@ class TasksController < ApplicationController
         redirect_to authenticated_root_path, notice: "Todo item completed"
     end
 
+    def undo
+        @task = Task.find(params[:id])
+        @task.update_attribute(:status, 'not done')
+        redirect_to authenticated_root_path, notice: "Todo item undone"
+    end
+
     private
 
     def task_params

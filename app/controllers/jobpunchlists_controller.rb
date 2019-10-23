@@ -61,7 +61,7 @@ class JobpunchlistsController < ApplicationController
   def destroy
     @jobpunchlist.destroy
     respond_to do |format|
-      format.html { redirect_to authenticated_root_path, notice: 'Punch list was successfully destroyed.' }
+      format.html { redirect_to jobpunchlists_path, notice: 'Punch list was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
