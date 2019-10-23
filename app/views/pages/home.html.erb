@@ -30,7 +30,7 @@
                         <td>Project</td>
                         <td>Email Date</td>
                         <td>Status</td>
-                        <td>Action</td>
+                        <td colspan='2' style='text-align: center'>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +41,10 @@
                         <td><s><%= todo.project %><s></td>
                         <td><s><%= todo.blueprint_email_date %><s></td>
                         <td><s>Done<s></td>
+                        <td><%= link_to undo_estimates_todo_path(todo), method: :patch do %>
+                            <i class="fas fa-undo"></i>
+                        <% end %>
+                        </td>
                         <td><%= link_to estimates_todo_path(todo), method: :delete do %>
                             <i class="fas fa-trash-alt"></i>
                         <% end %>
@@ -55,6 +59,10 @@
                         <td><%= link_to done_estimates_todo_path(todo), method: :patch do %>
                             <i class="fas fa-check"></i>
                             <% end %>
+                        </td>
+                        <td><%= link_to estimates_todo_path(todo), method: :delete do %>
+                            <i class="fas fa-trash-alt"></i>
+                        <% end %>
                         </td>
                     </tr>
                     <% end %>
@@ -74,7 +82,7 @@
                     <tr>
                         <td>Task</td>
                         <td>Status</td>
-                        <td>Action</td>
+                        <td colspan='2' style='text-align: center'>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,7 +91,11 @@
                     <tr>
                         <td><s><%= task.name %></s></td> 
                         <td><s><%= task.status %></s></td>
-                        <td><%= link_to task_path(task), method: :delete do %>
+                        <td style='text-align: center'><%= link_to undo_task_path(task), method: :patch do %>
+                            <i class="fas fa-undo"></i>
+                        <% end %>
+                        </td>
+                        <td style='text-align: center'><%= link_to task_path(task), method: :delete do %>
                             <i class="fas fa-trash-alt"></i>
                         <% end %>
                         </td>
@@ -92,8 +104,12 @@
                     <tr>
                         <td><%= task.name %></td> 
                         <td><%= 'Not Done' %> </td>
-                        <td><%= link_to done_task_path(task), method: :patch do %>
+                        <td style='text-align: center'><%= link_to done_task_path(task), method: :patch do %>
                             <i class="fas fa-check"></i>
+                            <% end %>
+                        </td>
+                        <td style='text-align: center'><%= link_to task_path(task), method: :delete do %>
+                            <i class="fas fa-trash-alt"></i>
                             <% end %>
                         </td>
                     </tr>

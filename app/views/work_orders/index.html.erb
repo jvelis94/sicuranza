@@ -35,6 +35,7 @@
                 <% invoice_array = 0 %>
                 <% @invoices.each do |invoice| %>
                         <% if work_order.id == invoice.work_order.id %>
+                            <td><%= link_to 'Edit Invoice', edit_invoice_path(invoice) %></td>
                             <td><%= link_to 'Webpage', invoice_path(invoice) %></td>
                             <td><%= link_to 'PDF', invoice_path(invoice, format: :pdf) %></td>
                             <% invoice_array += 1 %>

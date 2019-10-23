@@ -6,8 +6,10 @@
                 <tr>
                   <td class="title">
                     <%= image_tag wicked_pdf_asset_base64('mail_logo.png') %>
-                    
                   </td>
+                  <% if !(request.path_info).include?('pdf') %>
+                    <td><%= link_to 'Edit', edit_invoice_path(@invoice) %></td>
+                  <% end %>
                 </tr>
                 <tr class="information">
                   <td colspan="4">

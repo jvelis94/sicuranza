@@ -44,6 +44,12 @@ class EstimatesTodosController < ApplicationController
         redirect_to authenticated_root_path, notice: "Todo item completed"
     end
 
+    def undo
+        @estimates_todo = EstimatesTodo.find(params[:id])
+        @estimates_todo.update_attribute(:status, 'not done')
+        redirect_to authenticated_root_path, notice: "Todo item undone"
+    end
+
     private
 
     def estimates_todo_params

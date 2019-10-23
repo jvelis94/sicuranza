@@ -22,8 +22,10 @@
             <%= f.file_field :blueprints, multiple: true, direct_upload: true%>
         </div>
         </section>
-
         <br>
+        <h6>Notes</h6>
+        <%= f.text_area :notes, label: 'Notes:', id:'work-details' %>
+        <br><br>
 
         <%= f.button :submit, 'Create Customer', class: 'btn btn-primary' %>
     <% end %>

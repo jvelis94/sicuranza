@@ -10,17 +10,34 @@
         <%= submit_tag "Search", class: "btn btn-primary"%>
     <% end %>
     </div><br>
-
-<div class='punchlist-menu'>
+<table id='estimate-todo-table'>
+    <thead>
+        <tr>
+            <td>Punchlist</td>
+            <td>Description</td>
+            <td colspan='2' style='text-align: center'>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
     <% @jobpunchlists.each do |jobpunchlist| %>
-    <div class='punchlist'>
-        <h2 class="jobpunchlist_title"><%= link_to jobpunchlist.title, jobpunchlist %></h2>
-        <p class="jobpunchlist_sub_title"><%= jobpunchlist.description %></p>
-        <%= link_to 'Edit', edit_jobpunchlist_path(jobpunchlist) %> |
-        <%= link_to 'Delete', jobpunchlist_path(jobpunchlist), method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
+        <tr>
+            <td><%= link_to jobpunchlist.title, jobpunchlist %></td> 
+            <td><%= jobpunchlist.description %></td>
+            <td style='text-align: center'><%= link_to edit_jobpunchlist_path(jobpunchlist) do %>
+                <i class="fas fa-edit"></i>
+                <% end %>
+                
+            </td>
+            <td style='text-align: center'><%= link_to jobpunchlist_path(jobpunchlist), method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+                <% end %>
+            </td>
+        </tr>
     <% end %>
-</div>
+    </tbody>
+</table>
+
+<br>
 <br>
 <div class="links">
     <%= link_to "New Todo List", new_jobpunchlist_path %><br/>
