@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
             
     def index
         if params[:query].present?
-            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            sql_query = "project_name ILIKE :query OR name ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
             @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
         else
             @invoices = Invoice.all
@@ -77,7 +77,7 @@ class InvoicesController < ApplicationController
 
     def paid
         if params[:query].present?
-            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            sql_query = "project_name ILIKE :query OR name ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
             @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
         else
             @invoices = Invoice.all
@@ -86,7 +86,7 @@ class InvoicesController < ApplicationController
 
     def unpaid
         if params[:query].present?
-            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            sql_query = "project_name ILIKE :query OR name ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
             @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
         else
             @invoices = Invoice.all
@@ -95,7 +95,7 @@ class InvoicesController < ApplicationController
 
     def estimates
         if params[:query].present?
-            sql_query = "project_name ILIKE :query OR bill_to_info ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
+            sql_query = "project_name ILIKE :query OR name ILIKE :query OR CAST(job_date AS text) ILIKE :query OR CAST(id AS text) ILIKE :query OR CAST(balance_remaining AS text) ILIKE :query"
             @invoices = Invoice.where(sql_query, query: "%#{params[:query]}%")
         else
             @invoices = Invoice.all
@@ -106,7 +106,7 @@ class InvoicesController < ApplicationController
     private
 
     def invoice_params
-        params.require(:invoice).permit(:bill_to_info, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :paid, :notes, :job_type, :details_attributes => [:id, :description, :amount] )
+        params.require(:invoice).permit(:name, :address1, :address2, :project_name, :date, :job_date, :subtotal, :tax, :total, :payments_credits, :balance_remaining, :paid, :notes, :job_type, :details_attributes => [:id, :description, :amount] )
     end
 
     def set_invoice
