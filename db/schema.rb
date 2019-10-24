@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_165844) do
+ActiveRecord::Schema.define(version: 2019_10_24_215950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_10_23_165844) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.string "bill_to_info"
     t.date "date"
     t.date "job_date"
     t.integer "subtotal"
@@ -92,6 +91,9 @@ ActiveRecord::Schema.define(version: 2019_10_23_165844) do
     t.boolean "paid"
     t.string "notes"
     t.string "job_type"
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
     t.index ["work_order_id"], name: "index_invoices_on_work_order_id"
   end
 

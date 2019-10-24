@@ -13,13 +13,13 @@
                 </tr>
                 <tr class="information">
                   <td colspan="4">
-                    <table>
+                    <table style='margin-top: 160px'>
                       <tr>
                         <td>
-                          <strong>Bill To: <br>
-                          <%= (@invoice.bill_to_info).split('-')[0] %></strong><br>
-                          <%= (@invoice.bill_to_info).split('-')[1] %>
-                          <%= (@invoice.bill_to_info).split('-')[2] %><br>
+                          Bill To: <br>
+                          <%= @invoice.name %><br>
+                          <%= @invoice.address1 %><br>
+                          <%= @invoice.address2 %><br>
                         </td>
 
                         <td>
