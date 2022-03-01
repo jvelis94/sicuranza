@@ -40,4 +40,4 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'turbolinks', '~> 5.x'
 gem 'bootstrap-sass'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
